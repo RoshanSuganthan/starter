@@ -1,4 +1,25 @@
 ---
-title: 'Create Plant'
+title: 'Generate API Key'
 openapi: 'POST /plants'
 ---
+
+```json
+https://{{host}}/udm/v1/generate-api-key
+```
+
+Hosts can use this endpoint to generate a new API key for accessing the system. The generated key will be unique and can be used for authentication in subsequent API requests. Users should keep their API keys secure and treat them like passwords to prevent unauthorized access.
+
+## Body - raw (json)
+---
+```json
+{
+    "username":""
+}
+```
+## Responses   
+---
+```json
+{
+    "apiKey": "3e23e816503bcd6a8a29b7b4c1e3d5a7"
+}
+```
