@@ -19,9 +19,9 @@
     }
   ],
   "paths": {
-    "Generate API Key": {
+    "/udm/v1/card-block": {
       "post": {
-        "description": "Hosts can use this endpoint to generate a new API key for accessing the system. The generated key will be unique and can be used for authentication in subsequent API requests. Users should keep their API keys secure and treat them like passwords to prevent unauthorized access.",
+        "description": "Users can use this endpoint to block a specific card. Once a card is blocked, it cannot be used for transactions. This feature is essential for enhancing security and preventing unauthorized use of lost or stolen cards.",
         "parameters": [
           {
             "name": "limit",
@@ -58,10 +58,209 @@
             }
           }
         }
-      },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+      }
+    },
+    "/udm/v1/generate-api-key": {
+      "post": {
+        "description": "generates the api key",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of plant to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Plant deleted",
+            "content": {}
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/udm/v1/start/session": {
+      "post": {
+        "description": "Hosts can use this endpoint to initiate a new session, which is necessary before creating a questionnaire. The response will include a session ID, a URL, and an initial question.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of plant to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Plant deleted",
+            "content": {}
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/udm/v1/{{network}}/questionnaire": {
+      "post": {
+        "description": "Hosts can use this endpoint to initiate a new session, which is necessary before creating a questionnaire. The response will include a session ID, a URL, and an initial question.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of plant to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Plant deleted",
+            "content": {}
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/udm/v1/communication": {
+      "post": {
+        "description": "Hosts can use this endpoint to send an email that includes a cardholder letter. This feature is essential for ensuring that cardholders receive timely notifications and updates regarding their disputes.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of plant to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Plant deleted",
+            "content": {}
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/udm/v1/transaction/inquiry": {
+      "get": {
+        "description": "Hosts can use this endpoint to send an email that includes a cardholder letter. This feature is essential for ensuring that cardholders receive timely notifications and updates regarding their disputes.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of plant to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Plant deleted",
+            "content": {}
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/udm/v1/case/{{case_no}}/upload": {
+      "post": {
+        "description": "Hosts can use this endpoint to send an email that includes a cardholder letter. This feature is essential for ensuring that cardholders receive timely notifications and updates regarding their disputes.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of plant to delete",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Plant deleted",
+            "content": {}
+          },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/udm/v1/case/{{case_no}}/status": {
+      "post": {
+        "description": "Hosts can use this endpoint to send an email that includes a cardholder letter. This feature is essential for ensuring that cardholders receive timely notifications and updates regarding their disputes.",
         "parameters": [
           {
             "name": "id",
@@ -92,6 +291,7 @@
         }
       }
     }
+
   },
   "components": {
     "schemas": {
