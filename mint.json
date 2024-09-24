@@ -21,6 +21,11 @@
       "url": "mailto:info@backspace-tech.com"
     }
   ],
+  "api":{
+    "playground": {
+      "mode": "hide"
+    }
+  },
   "topbarCtaButton": {
     "name": "Website",
     "url": "https://www.backspace.tech"
@@ -45,7 +50,7 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "UDM Endpoint",
       "pages": [
         "api-reference/endpoint/generateKey",
         "api-reference/endpoint/cardBlock",

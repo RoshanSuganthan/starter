@@ -2,3 +2,203 @@
 title: 'Get Case Status'
 openapi: 'POST /udm/v1/case/{{case_no}}/status'
 ---
+
+<Card title="POST /udm/v1/case/{{case_no}}/status" horizontal>
+</Card>
+
+Hosts can use this endpoint to retrieve the current status of the case.
+
+Authorization - API key
+---
+ <ResponseField name="Key" type="string" required>
+      x-api-key
+    </ResponseField>
+
+    <ResponseField name="Value" type="string" required>
+     value
+    </ResponseField>  
+
+
+<RequestExample>
+
+```bash cURL
+curl --request POST \
+  --url 'https://{{host}}/udm/v1/card-block' \
+  --header 'Content-Type: application/json' \
+  --header 'x-api-key: ••••••' \
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json 200
+[
+    {
+        "case_no": "12092405000e",
+        "dispute_type": "1",
+        "dispute_amount": 3643.5,
+        "transaction_amount": 3643.5,
+        "created_date": "2024-09-12T11:15:07",
+        "status": "pending",
+        "sub_status": "waiting for network response",
+        "dispute_category": "Consumer Dispute",
+        "dispute_sub_category": "Counterfeit merchandise",
+        "network_data": {
+            "network_submitted_date": "2024-09-12T11:15:07",
+            "schemeDeadline": "2024-10-12T11:17:06",
+            "represented_amount": "",
+            "represented_date": "",
+            "reject_reason": ""
+        },
+        "transaction_id": "7344980",
+        "merchant_data": {
+            "merchant_name": "Test merchant",
+            "mcc": "5411"
+        }
+    }
+]
+```
+
+```json 400
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 400,
+    "title": "INVALID_REQUEST",
+    "message": [
+        {
+            "errorMessage": ""
+        }
+    ]
+}
+```
+
+```json 403
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 403,
+    "title": "ACCESS_DENIED",
+    "message": [
+        {
+            "errorMessage": "Access to this resource is forbidden."
+        }
+    ]
+}
+```
+
+```json 422
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 422,
+    "title":"UNPROCESSABLE_ENTITY",
+    "message": [
+        {
+            "errorMessage": ""
+        }
+    ]
+}
+```
+
+```json 500
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 500,
+    "title":"INTERNAL_SERVER_ERROR",
+    "message": [
+        {
+            "errorMessage": "Something went wrong, try again later"
+        }
+    ]
+}
+```
+</ResponseExample>
+
+Path Parameters
+---
+<ResponseField name="case_no" type="String" required>
+      Unique identifier for the case
+</ResponseField>
+
+Response
+--- 
+<ResponseField name="Case Status" type="CaseStatus Object">
+  <Expandable title="properties">
+
+    <ResponseField name="case_no" type="string" required>
+     Unique identifier for the case
+    </ResponseField>
+
+    <ResponseField name="dispute_type" type="enum" required>
+    Type of the dispute. Allowed values 1-Chargeback, 2-Pre-compliance, 3-Good faith, 4-Pre-Arbitration, 5-Arbitration, 6-Compliance
+    </ResponseField>
+
+     <ResponseField name="dispute_amount" type="string" required>
+      Amount associated with the dispute
+    </ResponseField>
+
+    <ResponseField name="transaction_amount" type="string" required>
+    Amount associated with the transaction
+    </ResponseField>
+
+     <ResponseField name="created_date" type="string" required>
+      Dispute created date within UDM
+    </ResponseField>
+
+    <ResponseField name="status" type="string" required>
+    Status of the dispute within UDM
+    </ResponseField>
+
+     <ResponseField name="dispute_category" type="string" required>
+     Category for the dispute
+    </ResponseField>
+
+    <ResponseField name="sub_status" type="string" required>
+    Sub-Status of the dispute within UDM
+    </ResponseField>
+
+     <ResponseField name="transaction_id" type="string" required>
+    Transaction Identifier
+    </ResponseField>
+
+<ResponseField name="network_data" type="NetworkData Object">
+  <Expandable title="properties">
+
+    <ResponseField name="schemeDeadline" type="string" required>
+    Deadline for responding to the case
+    </ResponseField>
+
+    <ResponseField name="network_submitted_date" type="string" required>
+    Date when the case was submitted to the network
+    </ResponseField>
+
+    <ResponseField name="represented_amount" type="string" required>
+    Amount represented by the acquirer
+    </ResponseField>
+
+    <ResponseField name="represented_date" type="string" required>
+    Date when the case was represented by the network
+    </ResponseField>
+
+    <ResponseField name="reject_reason" type="string" required>
+    Reason for rejection by the acquirer
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="merchant_data" type="MerchanData Object">
+  <Expandable title="properties">
+
+  <ResponseField name="merchant_name" type="string" required>
+   Name of the merchant
+    </ResponseField>
+
+    <ResponseField name="mcc" type="string" required>
+    Merchant category code
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+</Expandable>
+</ResponseField>
+
