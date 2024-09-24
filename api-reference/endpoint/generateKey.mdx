@@ -12,7 +12,7 @@ Hosts can use this endpoint to generate a new API key for accessing the system. 
 
 ```bash request
 curl --request POST \
-  --url 'http://{{host}}/udm/v1/generate-api-key' \
+  --url 'https://{{host}}/udm/v1/generate-api-key' \
   --header 'Content-Type: application/json' \
   --data '{
     "username":""
@@ -42,7 +42,7 @@ curl --request POST \
 ```
 
 ```json 422
-    {
+{   
     "timestamp": "2024-06-05T15:19:49.2490927",
     "status": 422,
     "title":"UNPROCESSABLE_ENTITY",
