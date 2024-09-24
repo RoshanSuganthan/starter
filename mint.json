@@ -56,11 +56,11 @@
       "group": "UDM Endpoint",
       "pages": [
         "api-reference/endpoint/generateKey",
-        "api-reference/endpoint/cardBlock",
         "api-reference/endpoint/createSession",
-        "api-reference/endpoint/questionnaire",
-        "api-reference/endpoint/communication",
         "api-reference/endpoint/transactionInquiry",
+        "api-reference/endpoint/questionnaire",
+        "api-reference/endpoint/cardBlock",
+        "api-reference/endpoint/communication",
         "api-reference/endpoint/uploadDocument",
         "api-reference/endpoint/getCaseStatus"
 

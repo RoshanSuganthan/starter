@@ -12,20 +12,16 @@ This endpoint allows users to retrieve detailed information about specific trans
 
 Authorization - API key
 ---
- <ResponseField name="Key" type="string" required>
+<ResponseField name="x-api-key" type="string" required>
       x-api-key
-    </ResponseField>
-
-    <ResponseField name="Value" type="string" required>
-     value
-    </ResponseField>  
+</ResponseField> 
 
 
 <RequestExample>
 
 ```bash cURL
 curl --request POST \
-  --url 'https://{{host}}/udm/v1/transaction/inquiry?transaction_id=123&start_date=YYYY-MM-DD&end_date=YYYY-MM-DD&rrn=212121212121&amount=123.67' \
+  --url 'https://{{host}}/udm/v1/transaction/inquiry?transaction_id=123&start_date=YYYY-MM-DD&end_date=YYYY-MM-DD&rrn=212121212121&amount=123.67&arn="74511113156656002500022"&pan="461234xxxxxx1234"' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: ••••••' \
 ```
@@ -132,7 +128,6 @@ curl --request POST \
             ],
             "sale_transactions": [
                 {
-                    "acquirer_case_number": "0",
                     "system_trace_audit_number": "050002",
                     "acquirer_reference_number": "74511113156656002500022",
                     "cardholder_account": "461234xxxxxx1234",
@@ -480,7 +475,7 @@ curl --request POST \
 
 Query Parameters
 ---
-    <ParamField  path="transaction_id" type="string" required>
+    <ParamField  path="transaction_id" type="string" >
     Transaction Identifier
     </ParamField>
 
@@ -488,15 +483,23 @@ Query Parameters
     Start date for the transaction search
     </ParamField>
 
+     <ParamField query="arn" type="string" >
+    Acquirer reference number
+    </ParamField>
+
+    <ParamField path="pan" type="string" >
+    Cardholder account number
+    </ParamField>
+
     <ParamField path="end_date" type="string" required>
     End date for the transaction search
     </ParamField>
 
-    <ParamField path="rrn" type="string" required>
-    Retrieval reference no
+    <ParamField path="rrn" type="string" >
+    Retrieval reference number
     </ParamField>
 
-    <ParamField path="amount" type="string" required>
+    <ParamField path="amount" type="string" >
     Transaction amount
     </ParamField>
 
@@ -795,9 +798,6 @@ Response
     <ResponseField name="sale_transactions" type="Sale Object">
         <Expandable title="properties">
   
-        <ResponseField name="acquirer_case_number" type="String" >
-Acquirer Case Number
-</ResponseField>
 <ResponseField name="system_trace_audit_number" type="String" required>
 System Trace Audit Number
 </ResponseField>
