@@ -5,11 +5,6 @@ openapi: 'POST /udm/v1/start/session'
 
 ## API Specification
 
-| Field  | Description  | Type  |Format|Length| Example|Required|
-|---|---|---|---|---|---|---|
-|  apiKey |  Unique identifier | String  | 	AB  | 32  |3e23e816503bcd6a8a29b7b4c1e3d5a7|M|
-
-
 <ParamField path="network" type="string">
   An example of a parameter field
 </ParamField>
@@ -17,7 +12,7 @@ openapi: 'POST /udm/v1/start/session'
 <RequestExample>
 ```bash request
 curl --request POST \
-  --url 'http://{{host}}/udm/v1/{network}/questionnaire' \
+  --url 'https://{{host}}/udm/v1/{network}/questionnaire' \
   --header 'Content-Type: application/json' \
   --data '{
   "question_id": "3",

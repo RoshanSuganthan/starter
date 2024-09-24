@@ -10,7 +10,7 @@ openapi: 'POST /udm/v1/{network}/questionnaire'
 
 ```bash request
 curl --request POST \
-  --url 'http://{{host}}/udm/v1/{network}/questionnaire' \
+  --url 'https://{{host}}/udm/v1/{network}/questionnaire' \
   --header 'Content-Type: application/json' \
   --data '{
   "question_id": "3",
@@ -29,7 +29,6 @@ curl --request POST \
 }'
 ```
 </RequestExample>
-
 
 <ResponseExample>
 ```json example-0
@@ -89,58 +88,73 @@ curl --request POST \
 
 ```json example-1
 {
-  "category": "question",
-  "url": "https://{{host}}/visa/questionnaire",
-  "data": {
-    "id": "13",
+"summary": "Question_Flow_2",
+"value": {
+    "category": "question",
+    "url": "https://{{host}}/visa/questionnaire",
+    "data": {
+    "id": "13.2.2",
     "type": "options",
-    "message": "What is the issue you want to raise a complaint in?",
+    "message": "Select one of the following",
     "options": [
-      {
-        "question_id": "13.1",
-        "option": "Goods/Services",
+        {
+        "question_id": "13.2.2a",
+        "option": "I was not aware of the subscription",
         "disabled": false
-      },
-      {
-        "question_id": "13.2",
-        "option": "Subscription",
+        },
+        {
+        "question_id": "13.2.2b",
+        "option": "I cancelled the subscription but I was debited",
         "disabled": false
-      },
-      {
-        "question_id": "13.3",
-        "option": "ATM transaction",
-        "disabled": false
-      },
-      {
-        "question_id": "13.4",
-        "option": "Credit",
-        "disabled": false
-      },
-      {
-        "question_id": "12.2",
-        "option": "Incorrect processing",
-        "disabled": false
-      },
-      {
-        "question_id": "12.6",
-        "option": "Charged more than once",
-        "disabled": false
-      },
-      {
-        "question_id": "11",
-        "option": "Authorization related issue",
-        "disabled": false
-      },
-      {
-        "question_id": "13.5",
-        "option": "Others",
-        "disabled": false
-      }
+        }
     ],
     "comments": false
-  }
+    }
+}
 }
 ```
+
+```json example-2
+ {
+"summary": "Question_Flow_3",
+"value": {
+    "category": "confirmation",
+    "url": "https://{{host}}/visa/questionnaire",
+    "data": {
+    "id": "3",
+    "type": "button",
+    "message": "Confirm complaint",
+    "comments": true
+    },
+    "attachment_categories": [
+    {
+        "category_id": 2,
+        "category": "proof of cancellation",
+        "mandatory": false
+    },
+    {
+        "category_id": 0,
+        "category": "others",
+        "mandatory": false
+    }
+    ]
+}
+}
+```
+
+```json example-3
+{
+    "summary": "Complaint_Confirmation",
+    "value": {
+        "complaintId": "CP-2-200924-0002",
+        "data": {
+        "message": "Complaint submitted successfully"
+        }
+    }
+    }
+```
+
+
 </ResponseExample>
 
 Authorization - API key
@@ -210,7 +224,7 @@ Body
 Response
 ---
 
-<ResponseField name="Questionnaire" type="Questionnaire Object">
+<ResponseField name="QuestionnaireResponse" type="Questionnaire Response Object">
   <Expandable title="properties">
     <ResponseField name="question_id" type="string" required>
       question_id for the response
