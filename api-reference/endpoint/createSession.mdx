@@ -538,7 +538,7 @@ Body
         <ResponseField name="status" type="Enum" required>
           Account status
         </ResponseField>
-        <ResponseField name="account_type" type="Enum required">
+        <ResponseField name="account_type" type="Enum" required>
           Cardholder account type
         </ResponseField>
 
@@ -547,6 +547,7 @@ Body
     </ResponseField>
 
     <ResponseField name=" txn_data" type="Transaction data Object">
+    <Expandable title="properties">
       <ResponseField name="transaction_id" type="String">
         Transaction Identifier
       </ResponseField>
@@ -832,6 +833,7 @@ Body
           </ResponseField>
         </Expandable>
       </ResponseField>
+      </Expandable>
     </ResponseField>
   </Expandable>
 </ResponseField>
