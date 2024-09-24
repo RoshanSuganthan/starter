@@ -2,3 +2,150 @@
 title: 'Card block'
 openapi: 'POST /udm/v1/card-block'
 ---
+
+
+<Card title="POST /udm/v1/card-block" horizontal>
+</Card>
+
+Users can use this endpoint to block a specific card. Once a card is blocked, it cannot be used for transactions. This feature is essential for enhancing security and preventing unauthorized use of lost or stolen cards.
+
+<Note>UDM will trigger hosts card block API with required parameters.</Note>
+
+Authorization - API key
+---
+ <ResponseField name="Key" type="string" required>
+      x-api-key
+    </ResponseField>
+
+    <ResponseField name="Value" type="string" required>
+     value
+    </ResponseField>  
+
+
+<RequestExample>
+
+```bash request
+curl --request POST \
+  --url 'https://{{host}}/udm/v1/card-block' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "card_data":{
+        "primary_account_number":"607129******4910",
+        "name":"Test user",
+        "exp_date":"1226",
+        "cvv":"211",
+        "reason":"Stolen card"
+    }
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json 200
+{
+    "status":"Success",
+    "message":"Card successfully blocked",
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "primary_account_number": "4910"
+}
+```
+
+```json 400
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 400,
+    "title": "INVALID_REQUEST",
+    "message": [
+        {
+            "errorMessage": ""
+        }
+    ]
+}
+```
+
+```json 403
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 403,
+    "title": "ACCESS_DENIED",
+    "message": [
+        {
+            "errorMessage": "Access to this resource is forbidden."
+        }
+    ]
+}
+```
+
+```json 422
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 422,
+    "title":"UNPROCESSABLE_ENTITY",
+    "message": [
+        {
+            "errorMessage": ""
+        }
+    ]
+}
+```
+
+```json 500
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 500,
+    "title":"INTERNAL_SERVER_ERROR",
+    "message": [
+        {
+            "errorMessage": "Something went wrong, try again later"
+        }
+    ]
+}
+```
+</ResponseExample>
+
+Body
+--- 
+
+<ResponseField name="CardData" type="CardData Object">
+  <Expandable title="properties">
+    <ResponseField name="primary_account_number" type="string" required>
+      Card no
+    </ResponseField>
+
+    <ResponseField name="name" type="string" required>
+     Cardholder name
+    </ResponseField>
+
+     <ResponseField name="exp_date" type="string" required>
+      Expiry date of the card
+    </ResponseField>
+
+    <ResponseField name="cvv" type="string" required>
+    CVV of the card
+    </ResponseField>
+
+    <ResponseField name="reason" type="string" required>
+     Reson for blocking
+    </ResponseField>
+</Expandable>
+</ResponseField>
+
+Response
+--- 
+
+<ResponseField name="status" type="enum" required>
+      Status of the process. Allowed values - Success, Failed
+    </ResponseField>
+
+    <ResponseField name="message" type="string" required>
+    Response message
+    </ResponseField>
+
+     <ResponseField name="timestamp" type="string" required>
+      Local date and time
+    </ResponseField>
+
+    <ResponseField name="primary_account_number" type="string" required>
+    Last 4 digit of the Card no
+    </ResponseField>

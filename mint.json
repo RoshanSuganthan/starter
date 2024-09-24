@@ -45,10 +45,9 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "UDM Endpoint",
       "pages": [
         "api-reference/endpoint/generateKey",
-        "api-reference/endpoint/delete",
         "api-reference/endpoint/cardBlock",
         "api-reference/endpoint/createSession",
         "api-reference/endpoint/questionnaire",

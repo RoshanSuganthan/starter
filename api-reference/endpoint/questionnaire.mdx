@@ -1,4 +1,271 @@
 ---
 title: 'Questionnaire'
-openapi: 'POST /udm/v1/{{network}}/questionnaire'
+openapi: 'POST /udm/v1/{network}/questionnaire'
 ---
+
+<Card title="POST /udm/v1/{network}/questionnaire" horizontal>
+</Card>
+
+<RequestExample>
+
+```bash request
+curl --request POST \
+  --url 'https://{{host}}/udm/v1/{network}/questionnaire' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "question_id": "3",
+  "question_ans": "Y",
+  "dispute_amount": "",
+  "isPartialDispute": true,
+  "comments": "have entered the amount",
+  "files": [
+    {
+      "file": "base 64 encoded data",
+      "type": "jpeg",
+      "name": "name.jpeg",
+      "category": "proof"
+    }
+  ]
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json example-0
+{
+  "category": "question",
+  "url": "https://{{host}}/visa/questionnaire",
+  "data": {
+    "id": "13",
+    "type": "options",
+    "message": "What is the issue you want to raise a complaint in?",
+    "options": [
+      {
+        "question_id": "13.1",
+        "option": "Goods/Services",
+        "disabled": false
+      },
+      {
+        "question_id": "13.2",
+        "option": "Subscription",
+        "disabled": false
+      },
+      {
+        "question_id": "13.3",
+        "option": "ATM transaction",
+        "disabled": false
+      },
+      {
+        "question_id": "13.4",
+        "option": "Credit",
+        "disabled": false
+      },
+      {
+        "question_id": "12.2",
+        "option": "Incorrect processing",
+        "disabled": false
+      },
+      {
+        "question_id": "12.6",
+        "option": "Charged more than once",
+        "disabled": false
+      },
+      {
+        "question_id": "11",
+        "option": "Authorization related issue",
+        "disabled": false
+      },
+      {
+        "question_id": "13.5",
+        "option": "Others",
+        "disabled": false
+      }
+    ],
+    "comments": false
+  }
+}
+```
+
+```json example-1
+{
+"summary": "Question_Flow_2",
+"value": {
+    "category": "question",
+    "url": "https://{{host}}/visa/questionnaire",
+    "data": {
+    "id": "13.2.2",
+    "type": "options",
+    "message": "Select one of the following",
+    "options": [
+        {
+        "question_id": "13.2.2a",
+        "option": "I was not aware of the subscription",
+        "disabled": false
+        },
+        {
+        "question_id": "13.2.2b",
+        "option": "I cancelled the subscription but I was debited",
+        "disabled": false
+        }
+    ],
+    "comments": false
+    }
+}
+}
+```
+
+```json example-2
+ {
+"summary": "Question_Flow_3",
+"value": {
+    "category": "confirmation",
+    "url": "https://{{host}}/visa/questionnaire",
+    "data": {
+    "id": "3",
+    "type": "button",
+    "message": "Confirm complaint",
+    "comments": true
+    },
+    "attachment_categories": [
+    {
+        "category_id": 2,
+        "category": "proof of cancellation",
+        "mandatory": false
+    },
+    {
+        "category_id": 0,
+        "category": "others",
+        "mandatory": false
+    }
+    ]
+}
+}
+```
+
+```json example-3
+{
+    "summary": "Complaint_Confirmation",
+    "value": {
+        "complaintId": "CP-2-200924-0002",
+        "data": {
+        "message": "Complaint submitted successfully"
+        }
+    }
+    }
+```
+
+
+</ResponseExample>
+
+Authorization - API key
+---
+ <ResponseField name="Key" type="string" required>
+      x-api-key
+    </ResponseField>
+
+    <ResponseField name="Value" type="string" required>
+     value
+    </ResponseField>  
+
+Headers
+---
+    <ResponseField name="x-session-id" type="string" required>
+     network session Id
+    </ResponseField> 
+
+Body
+--- 
+<ResponseField name="Questionnaire" type="Questionnaire Object">
+  <Expandable title="properties">
+    <ResponseField name="question_id" type="string" required>
+      question_id for the response
+    </ResponseField>
+
+    <ResponseField name="question_ans" type="string" required>
+     answer for the request
+    </ResponseField>
+
+     <ResponseField name="isPartialDispute" type="boolean" required>
+      is the case partial or not
+    </ResponseField>
+
+    <ResponseField name="dispute_amount" type="double">
+     dispute amount for the case
+    </ResponseField>
+
+    <ResponseField name="comments" type="string">
+     user comments 
+    </ResponseField>
+
+    <ResponseField name="File" type="File Object">
+        <Expandable>
+
+        <ResponseField name="file" type="string" required>
+            file in base 64 encoded
+        </ResponseField>
+
+        <ResponseField name="type" type="string">
+            type of the image
+        </ResponseField>
+
+        <ResponseField name="name" type="string">
+            name of the file 
+        </ResponseField>
+
+        <ResponseField name="category" type="string">
+            category of the file 
+        </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+Response
+---
+
+<ResponseField name="QuestionnaireResponse" type="Questionnaire Response Object">
+  <Expandable title="properties">
+    <ResponseField name="question_id" type="string" required>
+      question_id for the response
+    </ResponseField>
+
+    <ResponseField name="question_ans" type="string" required>
+     answer for the request
+    </ResponseField>
+
+     <ResponseField name="isPartialDispute" type="boolean" required>
+      is the case partial or not
+    </ResponseField>
+
+    <ResponseField name="dispute_amount" type="double">
+     dispute amount for the case
+    </ResponseField>
+
+    <ResponseField name="comments" type="string">
+     user comments 
+    </ResponseField>
+
+    <ResponseField name="File" type="File Object">
+        <Expandable>
+
+        <ResponseField name="file" type="string" required>
+            file in base 64 encoded
+        </ResponseField>
+
+        <ResponseField name="type" type="string">
+            type of the image
+        </ResponseField>
+
+        <ResponseField name="name" type="string">
+            name of the file 
+        </ResponseField>
+
+        <ResponseField name="category" type="string">
+            category of the file 
+        </ResponseField>
+        </Expandable>
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>

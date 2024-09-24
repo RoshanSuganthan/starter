@@ -2,3 +2,82 @@
 title: 'Generate API Key'
 openapi: 'POST /udm/v1/generate-api-key'
 ---
+
+<Card title="POST /udm/v1/generate-api-key" horizontal>
+</Card>
+
+Hosts can use this endpoint to generate a new API key for accessing the system. The generated key will be unique and can be used for authentication in subsequent API requests. Users should keep their API keys secure and treat them like passwords to prevent unauthorized access.
+
+<RequestExample>
+
+```bash request
+curl --request POST \
+  --url 'http://{{host}}/udm/v1/generate-api-key' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "username":""
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json 200
+{
+    "apiKey": "3e23e816503bcd6a8a29b7b4c1e3d5a7"
+}
+```
+
+```json 400
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 400,
+    "title": "INVALID_REQUEST",
+    "message": [
+        {
+            "errorMessage": ""
+        }
+    ]
+}
+```
+
+```json 422
+    {
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 422,
+    "title":"UNPROCESSABLE_ENTITY",
+    "message": [
+        {
+            "errorMessage": ""
+        }
+    ]
+}
+```
+
+```json 500
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 500,
+    "title":"INTERNAL_SERVER_ERROR",
+    "message": [
+        {
+            "errorMessage": "Something went wrong, try again later"
+        }
+    ]
+}
+```
+</ResponseExample>
+
+Body
+--- 
+
+<ResponseField name="username" type="string" required>
+      Enrolled username with UDM
+</ResponseField>
+
+Response
+--- 
+
+<ResponseField name="apiKey" type="string" required>
+    Unique identifier
+</ResponseField>
