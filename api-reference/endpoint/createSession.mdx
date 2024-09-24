@@ -1621,8 +1621,9 @@ Contains the agent’s bank account number for the receiving customer associated
 <ResponseField name="settlement_foreign_exchange_rate_class_code" type="String" >
 Iientifies the settlement level of the settlement service.
 </ResponseField>
-
- <ResponseField name="auth_reversal_transactions" type="Auth reversal transaction Object">
+        </Expandable>
+        </ResponseField>
+<ResponseField name="auth_reversal_transactions" type="Auth reversal transaction Object">
   <Expandable title="properties">
   <ResponseField name="message_type_id" type="String" required>
 Message type identifier 
@@ -1696,10 +1697,7 @@ The authorization code provided by the issuer when a transaction is approved or 
 </ResponseField>
 
   </Expandable>
-        </ResponseField>
-
-        </Expandable>
-        </ResponseField>
+        </ResponseField>        
       </Expandable>
     </ResponseField>
   </Expandable>
