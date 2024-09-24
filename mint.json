@@ -24,6 +24,9 @@
   "api":{
     "playground": {
       "mode": "hide"
+    },
+    "auth": {
+      "method": "key"
     }
   },
   "topbarCtaButton": {
