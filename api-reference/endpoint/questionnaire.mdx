@@ -31,130 +31,86 @@ curl --request POST \
 </RequestExample>
 
 <ResponseExample>
-```json example-0
+```json 200
 {
-  "category": "question",
-  "url": "https://{{host}}/visa/questionnaire",
-  "data": {
-    "id": "13",
-    "type": "options",
-    "message": "What is the issue you want to raise a complaint in?",
-    "options": [
-      {
-        "question_id": "13.1",
-        "option": "Goods/Services",
-        "disabled": false
-      },
-      {
-        "question_id": "13.2",
-        "option": "Subscription",
-        "disabled": false
-      },
-      {
-        "question_id": "13.3",
-        "option": "ATM transaction",
-        "disabled": false
-      },
-      {
-        "question_id": "13.4",
-        "option": "Credit",
-        "disabled": false
-      },
-      {
-        "question_id": "12.2",
-        "option": "Incorrect processing",
-        "disabled": false
-      },
-      {
-        "question_id": "12.6",
-        "option": "Charged more than once",
-        "disabled": false
-      },
-      {
-        "question_id": "11",
-        "option": "Authorization related issue",
-        "disabled": false
-      },
-      {
-        "question_id": "13.5",
-        "option": "Others",
-        "disabled": false
-      }
-    ],
-    "comments": false
-  }
-}
-```
-
-```json example-1
-{
-"summary": "Question_Flow_2",
-"value": {
-    "category": "question",
-    "url": "https://{{host}}/visa/questionnaire",
+    "category": "1",
+    "url": "<url>",
     "data": {
-    "id": "13.2.2",
-    "type": "options",
-    "message": "Select one of the following",
-    "options": [
-        {
-        "question_id": "13.2.2a",
-        "option": "I was not aware of the subscription",
-        "disabled": false
-        },
-        {
-        "question_id": "13.2.2b",
-        "option": "I cancelled the subscription but I was debited",
-        "disabled": false
+        "question_id": "13.2.2",
+        "type": "1",
+        "message": "Select one of the following",
+        "options": [
+            {
+                "question_id": "13.2.2a",
+                "option": "I was not aware of the subscription",
+                "disabled": false
+            }
+        ],
+        "min_date":"YYYY-MM-DD",
+        "max_date":"YYYY-MM-DD",
+        "attachment_categories":[{
+            "category_id": "1",
+            "category": "proof of cancellation", 
+            "mandatory": false
         }
-    ],
-    "comments": false
-    }
-}
+        ]
+    },
+    "complaint_id": "CP-2-200924-0002",
+    "case_no":"12092405000e"
 }
 ```
 
-```json example-2
- {
-"summary": "Question_Flow_3",
-"value": {
-    "category": "confirmation",
-    "url": "https://{{host}}/visa/questionnaire",
-    "data": {
-    "id": "3",
-    "type": "button",
-    "message": "Confirm complaint",
-    "comments": true
-    },
-    "attachment_categories": [
-    {
-        "category_id": 2,
-        "category": "proof of cancellation",
-        "mandatory": false
-    },
-    {
-        "category_id": 0,
-        "category": "others",
-        "mandatory": false
-    }
+```json 400
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 400,
+    "title": "INVALID_REQUEST",
+    "message": [
+        {
+            "errorMessage": ""
+        }
     ]
 }
+```
+
+```json 403
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 403,
+    "title": "ACCESS_DENIED",
+    "message": [
+        {
+            "errorMessage": "Access to this resource is forbidden."
+        }
+    ]
 }
 ```
 
-```json example-3
+```json 422
 {
-    "summary": "Complaint_Confirmation",
-    "value": {
-        "complaintId": "CP-2-200924-0002",
-        "data": {
-        "message": "Complaint submitted successfully"
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 422,
+    "title":"UNPROCESSABLE_ENTITY",
+    "message": [
+        {
+            "errorMessage": ""
         }
-    }
-    }
+    ]
+}
 ```
 
-
+```json 500
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 500,
+    "title":"INTERNAL_SERVER_ERROR",
+    "message": [
+        {
+            "errorMessage": "Something went wrong, try again later"
+        }
+    ]
+}
+```
 </ResponseExample>
 
 Authorization - API key
