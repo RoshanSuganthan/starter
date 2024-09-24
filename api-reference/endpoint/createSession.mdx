@@ -1,158 +1,533 @@
 ---
-title: 'Create session'
+title: 'Create Session'
 openapi: 'POST /udm/v1/start/session'
 ---
 
-## API Specification
+<Card title="POST /udm/v1/start/session" horizontal>
+</Card>
 
-<ParamField path="network" type="string">
-  An example of a parameter field
-</ParamField>
+Hosts can use this endpoint to initiate a new session, which is necessary before creating a questionnaire. The response will include a session ID, a URL, and an initial question.
+
+Note: Hosts must include the session ID in subsequent questionnaire submissions to the provided URL.
+
+Authorization - API key
+---
+ <ResponseField name="Key" type="string" required>
+      x-api-key
+    </ResponseField>
+
+    <ResponseField name="Value" type="string" required>
+     value
+    </ResponseField>  
+
 
 <RequestExample>
+
 ```bash request
 curl --request POST \
-  --url 'https://{{host}}/udm/v1/{network}/questionnaire' \
+  --url 'https://{{host}}/udm/v1/start/session' \
   --header 'Content-Type: application/json' \
   --data '{
-  "question_id": "3",
-  "question_ans": "Y",
-  "dispute_amount": "",
-  "isPartialDispute": true,
-  "comments": "have entered the amount",
-  "files": [
-    {
-      "file": "base 64 encoded data",
-      "type": "jpeg",
-      "name": "name.jpeg",
-      "category": "proof"
+    "dispute_type": "1",
+    "customer_data": {
+        "customer_id": "12345123451234512345",
+        "name": "Test ch",
+        "contact": {
+            "email": "customer@test.com",
+            "mobile_no": "1234567890",
+            "country_code": "91"
+        },
+        "account_info": {
+            "account_no": "2121212121",
+            "status": "1",
+            "account_type": "1"
+        }
+    },
+    "txn_data": {
+        "transaction_id": "9823739489",
+        "auth_transactions": {
+            "message_type_id": "0100",
+            "retrieval_reference_number": "312512000730",
+            "authorization_code": "494040",
+            "authorization_date": "1207",
+            "authorization_time": "055724",
+            "auth_amount_usd": "4.00",
+            "auth_amount_usd_debit_credit_ind": "DR",
+            "response_action_code": "00",
+            "original_message_type_id": "0",
+            "account_funding_source": "P ",
+            "account_funding_source_subtype": "0",
+            "pin_entry_capability": "1",
+            "chip_transaction_indicator": "1",
+            "cvv_result": "2",
+            "offline_data_authen_not_performed": "1",
+            "static_data_authen_was_unsuccessful": "0",
+            "chip_data_missing": "0",
+            "pan_on_term_exception_file": "0",
+            "dda_failed": "0",
+            "combined_dda_application_cryptogram_generation_failed": "0",
+            "chip_and_terminal_different_version": "1",
+            "expired_application": "0",
+            "application_not_yet_effective": "0",
+            "requested_service_not_allowed_for_card_product": "0",
+            "new_card": "0",
+            "cardholder_verify_was_not_successful": "0",
+            "unrecognized_cvm": "0",
+            "offline_pin_try_limit_exceeded": "0",
+            "pin_required_but_pin_pad_not_working_or_not_present": "0",
+            "pin_required_but_not_entered": "0",
+            "online_pin_entered": "1",
+            "transaction_exceeds_floor_limit": "1",
+            "lower_offline_limit_exceeded": "0",
+            "upper_offline_limit_exceeded": "0",
+            "tran_selected_randomly_for_online_transmission": "0",
+            "merchant_forced_transaction_online": "0",
+            "default_tdol_used": "0",
+            "authentication_failed": "0",
+            "script_processing_failed_before_generating_final_cryptogram": "0",
+            "script_processing_failed_after_generating_final_cryptogram": "0",
+            "derivation_key_index": "01 ",
+            "first_cryptogram_type": "ARQC",
+            "authentication_failed_cvr": "0",
+            "offline_pin_verification_performed": "0",
+            "offline_pin_verification_failed": "0",
+            "not_able_to_go_online": "0",
+            "last_online_transaction_incomplete": "1",
+            "pin_try_limit_exceeded": "0",
+            "velocity_checking_counters_exceeded": "1",
+            "new_card_cvr": "1",
+            "authentication_failed_last_transaction": "1",
+            "authentication_not_performed_after_last_online_transaction": "0",
+            "pin_try_limit_exceeded_card_blocked": "0",
+            "static_data_authentication_failed_last_transaction_not_able_to_go_online": "0",
+            "number_of_issuer_script_commands_1": "0",
+            "number_of_issuer_script_commands_2": "0",
+            "number_of_issuer_script_commands_3": "0",
+            "number_of_issuer_script_commands_4": "0",
+            "issuer_script_processing_failed": "0",
+            "dda_failed_previous_transaction_declined_offline": "0",
+            "dda_performed": "0",
+            "cavv_auth_result_code": "0",
+            "cavv_second_factor_auth_code": "0",
+            "cavv_key_indicator": "0",
+            "cavv_value": "0",
+            "cavv_unpredictable_number": "0",
+            "cavv_auth_tracking_number": "0",
+            "cavv_version": "0",
+            "cavv_auth_action": "0",
+            "cardholder_ip_address": "0",
+            "cryptogram": "D489DC996ACC7311 ",
+            "cvv2_present_indicator": "0",
+            "3d_secure_protocol_version_number": "0",
+            "cavv_type": "0",
+            "cavv_version_number": "0",
+            "decision_manager_result": "0",
+            "device_id_velocity": "0",
+            "consumer_ip_address_velocity": "0",
+            "cavv_result": "0",
+            "cavv_response": "0",
+            "risk_score": "01",
+            "merchant_floor_limit_amount": "0.00 ",
+            "token_type": "0",
+            "token_status": "0",
+            "track_three_data": "",
+            "transaction_analysis_overview": "",
+            "transaction_analysis_test results": "",
+            "banknet_reference_number": ""
+        },
+        "sale_transactions": [
+            {
+                "acquirer_case_number": "0",
+                "system_trace_audit_number": "050002",
+                "acquirer_reference_number": "74511113156656002500022",
+                "cardholder_account": "461234xxxxxx1234",
+                "card_sequence_number": "0",
+                "par": "0",
+                "cardholder_name": "",
+                "card_brand_code": "",
+                "card_acceptor_terminal_id_code": "16347365 ",
+                "card_acceptor_id_code": "301127540732 ",
+                "card_acceptor_name_location": "",
+                "merchant_name": "HALA",
+                "card_acceptor_street_address": "",
+                "merchant_city_name": "0",
+                "merchant_postal_zip": "\\ ",
+                "card_acceptor_country_code": "SA ",
+                "merchant_country": "0",
+                "merchant_state_code": "0",
+                "merchant_phone": "0",
+                "merchant_volume_indicator": "",
+                "merchant_url_email": "0",
+                "merchant_verification_value": "",
+                "biller_name": "",
+                "biller_country_code": "",
+                "biller_state_code": "",
+                "biller_postal_zip": "",
+                "biller_phone": "",
+                "biller_institution_country_code": "",
+                "network_management_info": "000",
+                "member_message_text": "",
+                "settlement_date": "1227",
+                "local_transaction_date": "1227",
+                "local_transaction_time": "15374378",
+                "transmission_date_time": "1227153743",
+                "central_processing_date": "060523",
+                "original_transaction_identifier": "0",
+                "original_reference": "050002",
+                "original_local_transaction_date_time": "1227153743",
+                "original_local_transaction_currency_code": "",
+                "original_local_transaction_amount": "",
+                "product_type": "P ",
+                "product_id": "K ",
+                "acquirer_institution_id": "451111",
+                "acquirer_institution_name": "Arab National Bank",
+                "acquirer_institution_country_code": "682",
+                "acquirer_bid": "00000000 ",
+                "terminal_type": "0",
+                "pos_environment_code": "0",
+                "pos_condition_code": "00 ",
+                "pos_terminal_entry_capability_code": "5",
+                "special_condition_indicator": "0",
+                "special_condition_risk_ind": "",
+                "special_condition_mti_ind": "",
+                "source_bin": "0002/0",
+                "issuer_institution_id": "462012",
+                "issuer_institution_name": "Yes Bank Ltd",
+                "issuer_institution_country_code": "356",
+                "destination_bin": "4864/ 113167",
+                "total_settlement_amount": "4.00",
+                "total_settlement_debit_credit_ind": "DR",
+                "total_settlement_currency_code": "840",
+                "settlement_amount": "4.00",
+                "settlement_debit_credit_ind": "0",
+                "settlement_currency_code": "840",
+                "conversion_date": "",
+                "conversion_rate": "0.2666667",
+                "issuer_settlement_conversion_rate": "0.2666667",
+                "acquirer_settlement_conversion_rate": "0.2666667",
+                "local_transaction_amount": "15.00",
+                "local_transaction_currency_code": "682",
+                "local_transaction_currency_exponent": "2",
+                "currency_conversion_reference_identifier_number": "",
+                "replacement_amount": "0.00",
+                "replacement_debit_credit_ind": "",
+                "settlement_flag": "0",
+                "settlement_service_id": "000",
+                "fee_program_indicator": "906",
+                "reimbursement_attribute": "0",
+                "interchange_reimbursement_fee": "",
+                "issuer_irf_sc_amount": "0.080",
+                "issuer_irf_sc_debit_credit_indicator": "DR",
+                "issuer_irf_ssbc_amount": "0.080",
+                "issuer_irf_ssbc_debit_credit_indicator": "DR",
+                "cardholder_billing_amount": "4.00",
+                "cardholder_billing_debit_credit_ind": "DR",
+                "cardholder_billing_currency_code": "840",
+                "jurisdiction": "INTERREGIONAL-AP,CEMEA",
+                "retrieval_reference_number": "315672656002",
+                "transaction_code": "05",
+                "usage_code": "0",
+                "processing_code": "",
+                "transaction_type": "00",
+                "from_account_type_code": "",
+                "to_account_type_code": "",
+                "authorization_amount": "15.00",
+                "authorization_currency_code": "682",
+                "total_authorized_amount": "",
+                "total_authorized_amount_exponent": "",
+                "total_authorized_amount_sign": "",
+                "auth_source_indicator": "0",
+                "cvv2_result": "0",
+                "address_verification_service_result": "",
+                "floor_limit_ind": "Z ",
+                "special_chargeback_code": "",
+                "token_requestor_id": "0",
+                "token_reference_id": "0",
+                "token_assurance_level": "0",
+                "token": "0",
+                "recurring_payment_max_amount": "",
+                "recurring_payment_frequency": "0",
+                "recurring_payment_amount_ind": "",
+                "recurring_validation_ind": "",
+                "recurring_payment_type": "",
+                "recurring_no_of_payment": "",
+                "recurring_registration_system_id": "",
+                "installment_payment_ind": "",
+                "number_of_installment_payments": "",
+                "installment_payment_number": "",
+                "installment_payment_amount": "",
+                "installment_payment_total_amount": "",
+                "installment_payment_currency_code": "",
+                "installment_interest_rate": "",
+                "installment_payment_interest_amount": "",
+                "vat_for_installment_payment_interest_amount": "",
+                "installment_payment_risk_fee_amount": "",
+                "vat_for_installment_payment_risk_fee_amount": "",
+                "installment_payment_frequency": "",
+                "terminal_capability_profile_hex": "",
+                "manual_key_entry": "",
+                "mag_stripe_read_capability": "",
+                "chip_read_capability": "",
+                "offline_plaintext_pin_supported": "",
+                "online_pin_allowed": "",
+                "signature_capability": "",
+                "offline_enciphered_pin_capability": "",
+                "no_cvm_required_supported": "",
+                "static_data_authen_supported": "",
+                "dynamic_data_authentication": "",
+                "card_capture_capability": "",
+                "cda_supported": "",
+                "application_interchange_profile_hex": "0",
+                "static_data_authentication_supported": "",
+                "dynamic_data_authentication_supported": "",
+                "cardholder_verification_supported": "",
+                "terminal_risk_management_to_be_performed": "",
+                "issuer_authentication_supported": "",
+                "combined_dda_generate_ac_is_supported": "",
+                "msd_is_supported": "",
+                "mobile_handset": "",
+                "cardholder_id_method": "0",
+                "electronic_commerce_goods_indicator": "0",
+                "interchange_fee_amount": "",
+                "interchange_fee_sign": "",
+                "source_currency_to_base_currency_exchange_rate": "",
+                "base_currency_to_destination_currency_exchange_rate": "",
+                "program_id": "",
+                "dynamic_currency_conversion_dcc_indicator": "",
+                "auth_char_indicator": "0",
+                "market_specific_data_indicator": "",
+                "message_reason_code": "0",
+                "moto_eci_indicator": "0",
+                "pos_entry_mode": "05",
+                "transaction_identifier": "393125466442082",
+                "merchant_category_code": "8999",
+                "cryptogram_unpredictable_number": "00000000",
+                "issuer_application_data": "0",
+                "terminal_application_version_number": "00",
+                "application_transaction_counter": "0",
+                "transaction_sequence_counter": "",
+                "application_identifier_terminal": "",
+                "terminal_country_code": "000",
+                "terminal_transaction_date": "0",
+                "terminal_transaction_type": "",
+                "terminal_serial_number": "",
+                "cryptogram_amount": "0",
+                "cryptogram_currency_code": "",
+                "chip_condition_code": "",
+                "contactless_form_factor_indicator": "00000000",
+                "agent_unique_id": "",
+                "network_identification_code": "0002",
+                "contact_for_information": "0",
+                "adjustment_processing_indicator": "",
+                "dispute_condition": "",
+                "surcharge_fee_debit_credit_ind": "",
+                "surcharge_fee_amount": "",
+                "surcharge_fee_cardholder_billing_amount": "",
+                "cashback_amount": "",
+                "cryptogram_cashback_amount": "0",
+                "settlement_amount_usd": "4.00",
+                "settlement_amount_usd_debit_credit_ind": "DR",
+                "acceptor_country_subdivision_code": "",
+                "original_reconciliation_amount": "",
+                "terminal_type_icc": "",
+                "terminal_operating_environment": "",
+                "card_present_data": "",
+                "reconciliation_conversion_rate": "",
+                "reconciliation_cycle": "",
+                "settlement_cycle": "",
+                "cardholder_billing_amount_usd": "",
+                "cardholder_billing_amount_usd_debit_credit_ind": "",
+                "function_code": "",
+                "cardholder_authentication_entity": "",
+                "card_data_output_capability": "",
+                "terminal_data_output_capability": "",
+                "pin_capture_capability": "",
+                "cryptogram_information_data": "",
+                "transaction_category_code": "",
+                "arpc_cryptogram": "",
+                "surcharge_account_type": "",
+                "surcharge_amount_type": "",
+                "surcharge_fee_cardholder_currency_code": "",
+                "surcharge_fee_cardholder_debit_credit_ind": "",
+                "settlement_service_level_code": "",
+                "healthcare_eligibility_account_type": "",
+                "healthcare_eligibility_amount_type": "",
+                "healthcare_eligibility_currency_code": "",
+                "healthcare_eligibility_debit_credit_ind": "",
+                "healthcare_eligibility_amount": "",
+                "prescription_eligibility_account_type": "",
+                "prescription_eligibility_amount_type": "",
+                "prescription_eligibility_currency_code": "",
+                "prescription_eligibility_debit_credit_ind": "",
+                "prescription_eligibility_amount": "",
+                "vision_rx_eligibility_account_type": "",
+                "vision_rx_eligibility_amount_type": "",
+                "vision_rx_eligibility_currency_code": "",
+                "vision_rx_eligibility_debit_credit_ind": "",
+                "vision_rx_eligibility_amount": "",
+                "prepaid_online_bill_pay_fee_account_type": "",
+                "prepaid_online_bill_pay_fee_amount_type": "",
+                "prepaid_online_bill_pay_fee_currency_code": "",
+                "prepaid_online_bill_pay_fee_debit_credit_ind": "",
+                "prepaid_online_bill_pay_fee_amount": "",
+                "cashback_account_type": "",
+                "cashback_amount_type": "",
+                "cashback_currency_code": "",
+                "cashback_debit_credit_ind": "",
+                "gratuity_account_type": "",
+                "gratuity_amount_type": "",
+                "gratuity_currency_code": "",
+                "gratuity_debit_credit_ind": "",
+                "gratuity_amount": "",
+                "original_transaction_amount_account_type": "",
+                "original_transaction_amount_amount_type": "",
+                "original_transaction_amount_currency_code": "",
+                "original_transaction_amount_debit_credit_ind": "",
+                "original_transaction_amount_amount": "",
+                "poi_amount_account_type": "",
+                "poi_amount_amount_type": "",
+                "poi_amount_currency_code": "",
+                "poi_amount_debit_credit_ind": "",
+                "poi_amount_amount": "",
+                "additional_data_1": "",
+                "additional_data_2": "",
+                "additional_data_3": "",
+                "additional_data_4": "",
+                "additional_data_5": "",
+                "transaction_life_cycle_id": "",
+                "life_cycle_support_indicator": "",
+                "settlement_service_transfer_agent_id_code": "",
+                "settlement_service_transfer_agent_account": "",
+                "settlement_foreign_exchange_rate_class_code": ""
+            }
+        ],
+        "auth_reversal_transactions": {
+            "message_type_id": "0400",
+            "retrieval_reference_number": "312512000730",
+            "authorization_code": "494040",
+            "authorization_date": "1207",
+            "authorization_time": "055724",
+            "auth_amount_usd": "4.00",
+            "auth_amount_usd_debit_credit_ind": "DR",
+            "response_action_code": "00"
+        },
+        "credit_transactions": [
+            {
+                "message_type_id": "0100",
+                "retrieval_reference_number": "312512000731",
+                "authorization_code": "494040",
+                "authorization_date": "1207",
+                "authorization_time": "055724",
+                "auth_amount_usd": "4.00",
+                "auth_amount_usd_debit_credit_ind": "DR",
+                "response_action_code": "00"
+            }
+        ]
     }
-  ]
 }'
 ```
 </RequestExample>
 
-
 <ResponseExample>
-```json example-0
+
+```json 200
 {
-  "category": "question",
-  "url": "https://{{host}}/visa/questionnaire",
-  "data": {
-    "id": "13",
-    "type": "options",
-    "message": "What is the issue you want to raise a complaint in?",
-    "options": [
-      {
-        "question_id": "13.1",
-        "option": "Goods/Services",
-        "disabled": false
-      },
-      {
-        "question_id": "13.2",
-        "option": "Subscription",
-        "disabled": false
-      },
-      {
-        "question_id": "13.3",
-        "option": "ATM transaction",
-        "disabled": false
-      },
-      {
-        "question_id": "13.4",
-        "option": "Credit",
-        "disabled": false
-      },
-      {
-        "question_id": "12.2",
-        "option": "Incorrect processing",
-        "disabled": false
-      },
-      {
-        "question_id": "12.6",
-        "option": "Charged more than once",
-        "disabled": false
-      },
-      {
-        "question_id": "11",
-        "option": "Authorization related issue",
-        "disabled": false
-      },
-      {
-        "question_id": "13.5",
-        "option": "Others",
-        "disabled": false
-      }
-    ],
-    "comments": false
-  }
+    "category": "question",
+    "sessionId": "1d8f00a9-467d-4a5a-852c-6f57d76263fb",
+    "url": "https://{host}/visa/questionnaire",
+    "data": {
+        "question_id": "1",
+        "type": "5",
+        "message": "Did you make this transaction?"
+    }
 }
 ```
 
-```json example-1
+```json 403
 {
-  "category": "question",
-  "url": "https://{{host}}/visa/questionnaire",
-  "data": {
-    "id": "13",
-    "type": "options",
-    "message": "What is the issue you want to raise a complaint in?",
-    "options": [
-      {
-        "question_id": "13.1",
-        "option": "Goods/Services",
-        "disabled": false
-      },
-      {
-        "question_id": "13.2",
-        "option": "Subscription",
-        "disabled": false
-      },
-      {
-        "question_id": "13.3",
-        "option": "ATM transaction",
-        "disabled": false
-      },
-      {
-        "question_id": "13.4",
-        "option": "Credit",
-        "disabled": false
-      },
-      {
-        "question_id": "12.2",
-        "option": "Incorrect processing",
-        "disabled": false
-      },
-      {
-        "question_id": "12.6",
-        "option": "Charged more than once",
-        "disabled": false
-      },
-      {
-        "question_id": "11",
-        "option": "Authorization related issue",
-        "disabled": false
-      },
-      {
-        "question_id": "13.5",
-        "option": "Others",
-        "disabled": false
-      }
-    ],
-    "comments": false
-  }
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 403,
+    "title": "ACCESS_DENIED",
+    "message": [
+        {
+            "errorMessage": "Access to this resource is forbidden."
+        }
+    ]
+}
+```
+
+```json 400
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 400,
+    "title": "INVALID_REQUEST",
+    "message": [
+        {
+            "errorMessage": ""
+        }
+    ]
+}
+```
+
+```json 422
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 422,
+    "title":"UNPROCESSABLE_ENTITY",
+    "message": [
+        {
+            "errorMessage": ""
+        }
+    ]
+}
+```
+
+```json 500
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 500,
+    "title":"INTERNAL_SERVER_ERROR",
+    "message": [
+        {
+            "errorMessage": "Something went wrong, try again later"
+        }
+    ]
 }
 ```
 </ResponseExample>
 
-<ResponseField name="user" type="User Object">
+Body
+--- 
+
+<ResponseField name="Create Session" type="Create Session Object">
   <Expandable title="properties">
-    <ResponseField name="full_name" type="string">
-      The full name of the user
+    <ResponseField name="dispute_type" type="Enum" required>
+      Type of the dispute
+      </ResponseField>
+
+    <ResponseField name="customer_data" type="Customer Data Object">
+     <Expandable title="properties">
+     <ResponseField name="customer_id" type="String" required>
+ID associated for a cardholder
+</ResponseField>
+<ResponseField name="name" type="String" required>
+Cardholder name
+</ResponseField>
+     </Expandable>
     </ResponseField>
 
-    <ResponseField name="is_over_21" type="boolean" required>
-      Whether the user is over 21 years old
-    </ResponseField>
-  </Expandable>
+     
+</Expandable>
 </ResponseField>
+
+Response
+--- 
+
+    <ResponseField name="status" type="enum" required>
+      Status of the process. Allowed values - Success, Failed
+    </ResponseField>
+
+    <ResponseField name="message" type="string" required>
+    Response message
+    </ResponseField>
+
