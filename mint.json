@@ -21,6 +21,11 @@
       "url": "mailto:info@backspace-tech.com"
     }
   ],
+  "api":{
+    "playground": {
+      "mode": "hide"
+    }
+  },
   "topbarCtaButton": {
     "name": "Website",
     "url": "https://www.backspace.tech"
