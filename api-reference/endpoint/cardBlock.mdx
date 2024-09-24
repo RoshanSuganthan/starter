@@ -28,6 +28,7 @@ Authorization - API key
 curl --request POST \
   --url 'https://{{host}}/udm/v1/card-block' \
   --header 'Content-Type: application/json' \
+  --header 'x-api-key: ••••••' \
   --data '{
     "card_data":{
         "primary_account_number":"607129******4910",
@@ -107,7 +108,7 @@ curl --request POST \
 Body
 --- 
 
-<ResponseField name="CardData" type="CardData Object">
+<ResponseField name="card_data" type="Card Data Object">
   <Expandable title="properties">
     <ResponseField name="primary_account_number" type="string" required>
       Card no

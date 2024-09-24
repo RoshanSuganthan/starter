@@ -8,8 +8,7 @@ openapi: 'POST /udm/v1/start/session'
 
 Hosts can use this endpoint to initiate a new session, which is necessary before creating a questionnaire. The response will include a session ID, a URL, and an initial question.
 
-Note: Hosts must include the session ID in subsequent questionnaire submissions to the provided URL.
-
+<Note>Hosts must include the session ID in subsequent questionnaire submissions to the provided URL.</Note>
 Authorization - API key
 ---
  <ResponseField name="Key" type="string" required>
@@ -27,6 +26,7 @@ Authorization - API key
 curl --request POST \
   --url 'https://{{host}}/udm/v1/start/session' \
   --header 'Content-Type: application/json' \
+  --header 'x-api-key: ••••••' \
   --data '{
     "dispute_type": "1",
     "customer_data": {
@@ -502,7 +502,7 @@ Body
 <ResponseField name="Create Session" type="Create Session Object">
   <Expandable title="properties">
     <ResponseField name="dispute_type" type="Enum" required>
-      Type of the dispute
+      Type of the dispute. Allowed values 1-Chargeback, 2-Pre-compliance, 3-Good faith
     </ResponseField>
 
     <ResponseField name="customer_data" type="Customer Data Object">
@@ -536,10 +536,10 @@ Body
           Cardholder account no
         </ResponseField>
         <ResponseField name="status" type="Enum" required>
-          Account status
+          Account status. Allowed values 1-Active 2-Closed
         </ResponseField>
         <ResponseField name="account_type" type="Enum" required>
-          Cardholder account type
+          Cardholder account type. Allowed values 1-Premium 2-Savings
         </ResponseField>
 
 

@@ -23,7 +23,7 @@ Authorization - API key
 
 ```bash cURL
 curl --request POST \
-  --url 'https://{{host}}/udm/v1/card-block' \
+  --url 'https://{{host}}/udm/v1/case/{{case_no}}/status' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: ••••••' \
 ```
@@ -45,7 +45,7 @@ curl --request POST \
         "dispute_sub_category": "Counterfeit merchandise",
         "network_data": {
             "network_submitted_date": "2024-09-12T11:15:07",
-            "schemeDeadline": "2024-10-12T11:17:06",
+            "scheme_deadline": "2024-10-12T11:17:06",
             "represented_amount": "",
             "represented_date": "",
             "reject_reason": ""
@@ -120,8 +120,6 @@ Path Parameters
 
 Response
 --- 
-<ResponseField name="Case Status" type="CaseStatus Object">
-  <Expandable title="properties">
 
     <ResponseField name="case_no" type="string" required>
      Unique identifier for the case
@@ -162,7 +160,7 @@ Response
 <ResponseField name="network_data" type="NetworkData Object">
   <Expandable title="properties">
 
-    <ResponseField name="schemeDeadline" type="string" required>
+    <ResponseField name="scheme_deadline" type="string" required>
     Deadline for responding to the case
     </ResponseField>
 
@@ -199,6 +197,5 @@ Response
   </Expandable>
 </ResponseField>
 
-</Expandable>
-</ResponseField>
+
 

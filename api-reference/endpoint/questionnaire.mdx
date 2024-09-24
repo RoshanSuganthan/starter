@@ -6,12 +6,16 @@ openapi: 'POST /udm/v1/{network}/questionnaire'
 <Card title="POST /udm/v1/{network}/questionnaire" horizontal>
 </Card>
 
+Hosts can use this endpoint to access the questionnaire and submit a complaint within the UDM system.
+
 <RequestExample>
 
 ```bash request
 curl --request POST \
   --url 'https://{{host}}/udm/v1/{network}/questionnaire' \
   --header 'Content-Type: application/json' \
+  --header 'x-session-id: 1d8f00a9-467d-4a5a-852c-6f57d76263fb' \
+  --header 'x-api-key: ••••••' \
   --data '{
   "question_id": "3",
   "question_ans": "Y",
@@ -126,7 +130,7 @@ Authorization - API key
 Headers
 ---
     <ResponseField name="x-session-id" type="string" required>
-     network session Id
+    Unique identifier for a session. Host must create this session id by using create session API
     </ResponseField> 
 
 Body

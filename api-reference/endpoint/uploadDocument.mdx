@@ -24,8 +24,9 @@ Authorization - API key
 
 ```bash cURL
 curl --request POST \
-  --url 'https://{{host}}/udm/v1/card-block' \
+  --url 'https://{{host}}/udm/v1/case/{{case_no}}/upload' \
   --header 'Content-Type: application/json' \
+  --header 'x-api-key: ••••••' \
   --data '{
     "files": [
         {
@@ -101,10 +102,16 @@ curl --request POST \
 ```
 </ResponseExample>
 
+Path Parameter
+---
+<ParamField path="case_no" type="string" required>
+Unique identifier for the case
+</ParamField>
+
 Body
 --- 
 
-    <ResponseField name="Files" type="File Object">
+    <ResponseField name="Files" type="Files Object">
         <Expandable title="properties">
         <ResponseField name="file" type="string" required>
         Base 64 encoded data string

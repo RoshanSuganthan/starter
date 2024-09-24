@@ -6,7 +6,7 @@ openapi: 'GET /udm/v1/transaction/inquiry'
 <Card title="GET /udm/v1/transaction/inquiry" horizontal>
 </Card>
 
-Hosts can use this endpoint to upload a document to a specific case within categorized groups.
+This endpoint allows users to retrieve detailed information about specific transactions. By providing parameters such as transaction ID, RRN with date range, users can access data related to their transaction history, including amounts, dates, and statuses.
 
 <Note>UDM will trigger hosts inquiry API with required parameters to check the status of the transactions like refund or reversal.</Note>
 
@@ -27,6 +27,7 @@ Authorization - API key
 curl --request POST \
   --url 'https://{{host}}/udm/v1/transaction/inquiry?transaction_id=123&start_date=YYYY-MM-DD&end_date=YYYY-MM-DD&rrn=212121212121&amount=123.67' \
   --header 'Content-Type: application/json' \
+  --header 'x-api-key: ••••••' \
 ```
 </RequestExample>
 
