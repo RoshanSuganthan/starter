@@ -226,46 +226,82 @@ Response
 
 <ResponseField name="QuestionnaireResponse" type="Questionnaire Response Object">
   <Expandable title="properties">
-    <ResponseField name="question_id" type="string" required>
-      question_id for the response
+    <ResponseField name="category" type="enum" required>
+      Category for the question. Allowed values - 1 - Question, 2 - Close, 3 - Confirmation
     </ResponseField>
 
-    <ResponseField name="question_ans" type="string" required>
-     answer for the request
+    <ResponseField name="url" type="String" required>
+     URL where the question answer should be submitted
     </ResponseField>
 
-     <ResponseField name="isPartialDispute" type="boolean" required>
-      is the case partial or not
+    <ResponseField name="complaint_id" type="String" required>
+     Unique identifier for the complaint
     </ResponseField>
 
-    <ResponseField name="dispute_amount" type="double">
-     dispute amount for the case
+    <ResponseField name="case_no" type="String" required>
+     Unique identifier for the case
     </ResponseField>
 
-    <ResponseField name="comments" type="string">
-     user comments 
-    </ResponseField>
+        <ResponseField name="Data" type="data Object">
+            <Expandable title="properties">
+            <ResponseField name="question_id" type="string" required>
+                Unique identifier used to identify the question
+            </ResponseField>
 
-    <ResponseField name="File" type="File Object">
-        <Expandable>
+            <ResponseField name="type" type="String" required>
+               Type of the question
+            </ResponseField>
 
-        <ResponseField name="file" type="string" required>
-            file in base 64 encoded
-        </ResponseField>
+           <ResponseField name="message" type="String" required>
+                Title for the questions
+            </ResponseField>
 
-        <ResponseField name="type" type="string">
-            type of the image
-        </ResponseField>
+            <ResponseField name="min_date" type="String" required>
+                The minimum date should be displayed in the date picker
+            </ResponseField>
 
-        <ResponseField name="name" type="string">
-            name of the file 
-        </ResponseField>
+           <ResponseField name="max_date" type="String" required>
+                The maximum date should be displayed in the date picker.
+            </ResponseField>
 
-        <ResponseField name="category" type="string">
-            category of the file 
-        </ResponseField>
-        </Expandable>
-    </ResponseField>
+
+                <ResponseField name="options" type="Options Object">
+                <Expandable title="properties">
+                <ResponseField name="question_id" type="string" required>
+                    Unique identifier used to identify the question
+                </ResponseField>
+
+                <ResponseField name="option" type="String" required>
+                   Title for the options
+                </ResponseField>
+
+                <ResponseField name="disabled" type="boolean" required>
+                    Flag to show options is enbled or not
+                </ResponseField>
+
+                </Expandable>
+                </ResponseField>
+
+
+                <ResponseField name="attachment_categories" type="attachment_categories Object">
+                <Expandable title="properties">
+                <ResponseField name="category_id" type="string" required>
+                    Unique identifier used to identify the category
+                </ResponseField>
+
+                <ResponseField name="category" type="enum" required>
+                    Allowed values - 1 - Question, 2 - Close, 3 - Confirmation
+                </ResponseField>
+
+                <ResponseField name="mandatory" type="boolean" required>
+                    Flag to show document is mandatory or not 
+                </ResponseField>
+
+                </Expandable>
+                </ResponseField>
+
+            </Expandable>
+            </ResponseField>
 
   </Expandable>
 </ResponseField>

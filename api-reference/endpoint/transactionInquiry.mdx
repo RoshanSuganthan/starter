@@ -524,9 +524,795 @@ Response
 
     <ResponseField name="sale_transactions" type="Sale Object">
         <Expandable title="properties">
-            <ResponseField name="status" type="enum" required>
-            Status of the process. Allowed values - Success, Failed
-            </ResponseField>
+  
+        <ResponseField name="acquirer_case_number" type="String" >
+Acquirer Case Number
+</ResponseField>
+<ResponseField name="system_trace_audit_number" type="String" required>
+System Trace Audit Number
+</ResponseField>
+<ResponseField name="acquirer_reference_number" type="String" required>
+A 23-digit identification number assigned by the acquirer and included in a Clearing Record.
+</ResponseField>
+<ResponseField name="cardholder_account" type="String" required>
+An issuer-assigned number that identifies a cardholder’s account. 
+</ResponseField>
+<ResponseField name="card_sequence_number" type="String" >
+Contains a number assigned to a card when two or more individual cards are associated with the same primary account  number
+</ResponseField>
+<ResponseField name="par" type="String" >
+Payment account reference
+</ResponseField>
+<ResponseField name="cardholder_name" type="String" required>
+Name of individual to whom a Card is issued, or who is authorized to use the Card.
+</ResponseField>
+<ResponseField name="card_brand_code" type="String" >
+Card brand
+</ResponseField>
+<ResponseField name="card_acceptor_terminal_id_code" type="String" required>
+Code identifying the card acceptor terminal or ATM. 
+</ResponseField>
+<ResponseField name="card_acceptor_id_code" type="String" required>
+Code that identifies the card acceptor operating the POS terminal.
+</ResponseField>
+<ResponseField name="card_acceptor_name_location" type="String" required>
+Contains the name and location of the card acceptor (merchant or ATM), including the city name and country code.
+</ResponseField>
+<ResponseField name="merchant_name" type="String" required>
+Name of the merchant in the original transaction.
+</ResponseField>
+<ResponseField name="card_acceptor_street_address" type="String" >
+Contains merchant street address.
+</ResponseField>
+<ResponseField name="merchant_city_name" type="String" required>
+The name of the city where the customer transaction occurs. 
+</ResponseField>
+<ResponseField name="merchant_postal_zip" type="String" required>
+Postal code of the merchant where the transaction took place.
+</ResponseField>
+<ResponseField name="card_acceptor_country_code" type="String" required>
+Code for the country where the customer transaction occurs.
+</ResponseField>
+<ResponseField name="merchant_country" type="String" required>
+Code indicating country where the transaction occurred, regardless of the location of entry to the system.
+</ResponseField>
+<ResponseField name="merchant_state_code" type="String" required>
+Code designating merchant’s state or province code.
+</ResponseField>
+<ResponseField name="merchant_phone" type="String" >
+Containing the merchant or customer service telephone number. 
+</ResponseField>
+<ResponseField name="merchant_volume_indicator" type="String" >
+Indicates the amount of IRF reduction based on the merchant's volume.
+</ResponseField>
+<ResponseField name="merchant_url_email" type="String" >
+containS the merchant’s URL or e-mail address.
+</ResponseField>
+<ResponseField name="merchant_verification_value" type="String" >
+The value is assigned by Visa to determine a merchant’s eligibility to participate in any special programs.
+</ResponseField>
+<ResponseField name="biller_name" type="String" >
+Biller’s name.
+</ResponseField>
+<ResponseField name="biller_country_code" type="String" >
+Contains the code of the country where the biller is located.
+</ResponseField>
+<ResponseField name="biller_state_code" type="String" >
+Contains the state, province, or region code where the biller is located. 
+</ResponseField>
+<ResponseField name="biller_postal_zip" type="String" >
+Biller’s postal code.
+</ResponseField>
+<ResponseField name="biller_phone" type="String" >
+Contain the biller's telephone number.
+</ResponseField>
+<ResponseField name="biller_institution_country_code" type="String" >
+Contains the code for the country in which the biller financial institution operates.
+</ResponseField>
+<ResponseField name="network_management_info" type="String" >
+Network Management Information Code
+</ResponseField>
+
+<ResponseField name="member_message_text" type="String" >
+Used to send text messages. Administrative message used to convey information from a sender to a receiver.
+</ResponseField>
+<ResponseField name="settlement_date" type="String" required>
+Contains the date on which the transactions were settled.
+</ResponseField>
+<ResponseField name="local_transaction_date" type="String" >
+The date on which a transaction between a cardholder and a merchant, an acquirer, or a carrier, occurs.
+</ResponseField>
+<ResponseField name="local_transaction_time" type="String" >
+The time at which a transaction between a cardholder and a merchant, an acquirer, or a carrier occurs.
+</ResponseField>
+<ResponseField name="transmission_date_time" type="String" required>
+Contains the date and time the request or advice was submitted to Network.
+</ResponseField>
+<ResponseField name="central_processing_date" type="String" required>
+The date that BASE II processed this transaction or item.
+</ResponseField>
+<ResponseField name="original_transaction_identifier" type="String" >
+Contains the original Transaction ID from the original message.
+</ResponseField>
+<ResponseField name="original_reference" type="String" >
+Contains the 6-digit original trace number from the original message.
+</ResponseField>
+<ResponseField name="original_local_transaction_date_time" type="String" >
+The date and time on which the original transaction between a cardholder and a merchant, an acquirer, or a carrier, occurs.
+</ResponseField>
+<ResponseField name="original_local_transaction_currency_code" type="String" >
+Currency code of original transaction amount.
+</ResponseField>
+<ResponseField name="original_local_transaction_amount" type="String" >
+Transaction amount of the original transaction.
+</ResponseField>
+<ResponseField name="product_type" type="String" >
+Credit / Debit / Prepaid / N
+</ResponseField>
+<ResponseField name="product_id" type="String" >
+Product identifier code.
+</ResponseField>
+<ResponseField name="acquirer_institution_id" type="String" >
+Contain a code that identifies the financial institution acting as the acquirer of the transaction.
+</ResponseField>
+<ResponseField name="acquirer_institution_name" type="String" required>
+Contain a name of the acquirer.
+</ResponseField>
+<ResponseField name="acquirer_institution_country_code" type="String" required>
+Code identifying the country where the acquirer is located.
+</ResponseField>
+<ResponseField name="acquirer_bid" type="String" >
+Contains the Visa-assigned business ID of the acquirer.
+</ResponseField>
+<ResponseField name="terminal_type" type="String" >
+This is a 1-digit code identifying the basic point-of-service electronic terminal. This field is also used for identifying ATM transactions.
+</ResponseField>
+<ResponseField name="pos_environment_code" type="String" required>
+A recurring transaction indicator.
+</ResponseField>
+<ResponseField name="pos_condition_code" type="String" required>
+Contain the point-of-sale (POS) condition code of the dispute transaction.
+</ResponseField>
+<ResponseField name="pos_terminal_entry_capability_code" type="String" required>
+Identifies the method used to enter the cardholder account number and card expiration date. This code specifies whether the entire magnetic stripe is included in an authorization or financial request.
+</ResponseField>
+<ResponseField name="special_condition_indicator" type="String" >
+Additional information regarding chargebacks. Contain the appropriate Risk Identification Service indicator and/or merchant indicator.
+</ResponseField>
+<ResponseField name="special_condition_risk_ind" type="String" >
+Additional information regarding chargebacks. Contain the appropriate Risk Identification Service indicator.
+</ResponseField>
+<ResponseField name="special_condition_mti_ind" type="String" >
+Additional information regarding chargebacks. Contain the appropriate merchant indicator.
+</ResponseField>
+<ResponseField name="source_bin" type="String" >
+The BIN from which this BASE II transaction message was sent. A financial BIN.
+</ResponseField>
+<ResponseField name="issuer_institution_id" type="String" required>
+Contains a code identifying the issuer.
+</ResponseField>
+<ResponseField name="issuer_institution_name" type="String" required>
+Contains issuer name
+</ResponseField>
+<ResponseField name="issuer_institution_country_code" type="String" required>
+Contains a code that identifies the country of the institution that issued the card.
+</ResponseField>
+<ResponseField name="destination_bin" type="String" >
+The BIN to which a BASE II transaction message is sent.
+</ResponseField>
+<ResponseField name="total_settlement_amount" type="String" >
+Total Settled Amount
+</ResponseField>
+<ResponseField name="total_settlement_debit_credit_ind" type="String" >
+Indicates the sign of the amount in the Settlement Amount 
+</ResponseField>
+<ResponseField name="total_settlement_currency_code" type="String" >
+If destined to Originator, use Source Settlement Currency. If destined to Recipient, use Destination Settlement Currency.
+</ResponseField>
+<ResponseField name="settlement_amount" type="String" required>
+If destined to Originator, use Source Settlement Amount. If destined to Recipient, use Destination Settlement Amount.
+</ResponseField>
+<ResponseField name="settlement_debit_credit_ind" type="String" required>
+Indicates the sign of the amount in the Settlement Amount 
+</ResponseField>
+<ResponseField name="settlement_currency_code" type="String" required>
+If destined to Originator, use Source Settlement Amount. If destined to Recipient, use Destination Settlement Amount.
+</ResponseField>
+<ResponseField name="conversion_date" type="String" >
+Contain the date of the currency file that was used to convert the currency.
+</ResponseField>
+<ResponseField name="conversion_rate" type="String" required>
+The rate used by network to convert the transaction amount to the cardholder billing amount including the optional issuer fee .
+</ResponseField>
+<ResponseField name="issuer_settlement_conversion_rate" type="String" required>
+Issuer Settlement Conversion Rate 
+</ResponseField>
+<ResponseField name="acquirer_settlement_conversion_rate" type="String" required>
+Acquirer Settlement Conversion Rate 
+</ResponseField>
+<ResponseField name="local_transaction_amount" type="String" required>
+Transaction amount in merchant currency.
+</ResponseField>
+<ResponseField name="local_transaction_currency_code" type="String" required>
+The ISO currency code which identifies the transaction currency code.
+</ResponseField>
+<ResponseField name="local_transaction_currency_exponent" type="String" required>
+Decimal Positions Indicator for the transaction amount
+</ResponseField>
+<ResponseField name="currency_conversion_reference_identifier_number" type="String" >
+Unique alphanumeric identifier generated by the provider of the currency conversion services and may be used for reconciliation purposes.
+</ResponseField>
+<ResponseField name="replacement_amount" type="String" >
+The corrected amount of an authorization transaction in a partial reversal
+</ResponseField>
+<ResponseField name="replacement_debit_credit_ind" type="String" >
+Indicates the sign of the amount in the Replacement Amount 
+</ResponseField>
+<ResponseField name="settlement_flag" type="String" >
+Indicates the service used for settlement.
+</ResponseField>
+<ResponseField name="settlement_service_id" type="String" >
+This field will contain the name of the settlement service that the transaction settled.
+</ResponseField>
+<ResponseField name="fee_program_indicator" type="String" >
+Fee Program IndicatorThe field can be present in 0100 and 0400 requests and their advices, but not in responses.
+</ResponseField>
+<ResponseField name="reimbursement_attribute" type="String" >
+Reimbursement Attribute
+</ResponseField>
+<ResponseField name="interchange_reimbursement_fee" type="String" >
+Contain the IRF calculated by the member for this transaction.
+</ResponseField>
+<ResponseField name="issuer_irf_sc_amount" type="String" >
+Issuer IRF in SC
+</ResponseField>
+<ResponseField name="issuer_irf_sc_debit_credit_indicator" type="String" >
+Indicates the sign of the amount in the Settlement Code Amount 
+</ResponseField>
+<ResponseField name="issuer_irf_ssbc_amount" type="String" >
+Issuer IRF in SSBC
+</ResponseField>
+<ResponseField name="issuer_irf_ssbc_debit_credit_indicator" type="String" >
+Indicates the sign of the amount in the SS Balancing Currency Amount 
+</ResponseField>
+<ResponseField name="cardholder_billing_amount" type="String" required>
+The purchase value in transaction currency.
+</ResponseField>
+<ResponseField name="cardholder_billing_debit_credit_ind" type="String" required>
+Indicates the sign of the amount in the Cardholder billing Amount 
+</ResponseField>
+<ResponseField name="cardholder_billing_currency_code" type="String" required>
+Currency code used in the transaction.
+</ResponseField>
+<ResponseField name="jurisdiction" type="String" >
+jurisdiction
+</ResponseField>
+<ResponseField name="retrieval_reference_number" type="String" required>
+This field will contain the retrieval reference number of the financial dispute transaction processed through the network process.
+</ResponseField>
+
+
+<ResponseField name="transaction_code" type="String" >
+The transaction code (TC) description identifies the type of transaction being processed by BASE II.
+</ResponseField>
+<ResponseField name="usage_code" type="String" >
+Indicates whether this is the first presentment or second. 
+</ResponseField>
+<ResponseField name="processing_code" type="String" required>
+Contains coding that identifies (1) the customer transaction type and (2) the customer account types affected by the transaction. This field is fixed-length and contains three data elements.
+</ResponseField>
+<ResponseField name="transaction_type" type="String" >
+Contains a 2-digit code identifying the type of cardholder transaction or center function being processed.
+</ResponseField>
+<ResponseField name="from_account_type_code" type="String" >
+A 2-digit code identifying the account type affected by this transaction or from which an account transfer is made.
+</ResponseField>
+<ResponseField name="to_account_type_code" type="String" >
+For ATM account transfers, a two-digit code identifying the account type to which an account transfer is made.
+</ResponseField>
+<ResponseField name="authorization_amount" type="String" required>
+Amount the issuer originally authorized. 
+</ResponseField>
+<ResponseField name="authorization_currency_code" type="String" required>
+Currency code of the authorized source amount.
+</ResponseField>
+<ResponseField name="total_authorized_amount" type="String" required>
+The total amount of the transaction including all taxes and miscellaneous fees.
+</ResponseField>
+<ResponseField name="total_authorized_amount_exponent" type="String" required>
+Decimal Positions Indicator for the Total Authorized  amount
+</ResponseField>
+<ResponseField name="total_authorized_amount_sign" type="String" >
+Indicates the sign of the amount in the Total Authorized  Amount 
+</ResponseField>
+<ResponseField name="auth_source_indicator" type="String" >
+The source for the response; typically, either the recipient issuer or a network system.
+</ResponseField>
+<ResponseField name="cvv2_result" type="String" required>
+The verification result for card-not-present transactions and also for card-present CVV2 verification-only requests.
+</ResponseField>
+<ResponseField name="address_verification_service_result" type="String" >
+Visa-defined code that describes the results of a Visa address verification.
+</ResponseField>
+<ResponseField name="floor_limit_ind" type="String" >
+Floor Limit
+</ResponseField>
+<ResponseField name="special_chargeback_code" type="String" >
+Full or Partial chargeback amount
+</ResponseField>
+<ResponseField name="token_requestor_id" type="String" >
+Contain Token Requestor ID for Purchase and Credit Voucher token transactions.
+</ResponseField>
+<ResponseField name="token_reference_id" type="String" >
+Contain Token Reference ID for Purchase and Credit Voucher token transactions.
+</ResponseField>
+<ResponseField name="token_assurance_level" type="String" >
+Token Assurance Method
+</ResponseField>
+<ResponseField name="token" type="String" >
+A value that replaces the PAN at the time of authorization and clearing for merchants/acquirers.
+</ResponseField>
+<ResponseField name="recurring_payment_max_amount" type="String" >
+Max Recurring Payment Amount
+</ResponseField>
+<ResponseField name="recurring_payment_frequency" type="String" >
+Frequency of Recurring Payment
+</ResponseField>
+<ResponseField name="recurring_payment_amount_ind" type="String" >
+Payment Amount Ind
+</ResponseField>
+<ResponseField name="recurring_validation_ind" type="String" >
+Validation Ind
+</ResponseField>
+<ResponseField name="recurring_payment_type" type="String" >
+Recurring Payment Type
+</ResponseField>
+<ResponseField name="recurring_no_of_payment" type="String" >
+Number of Recurring Payment
+</ResponseField>
+<ResponseField name="recurring_registration_system_id" type="String" >
+Visa Recurring Plan Registration System Id
+</ResponseField>
+<ResponseField name="installment_payment_ind" type="String" >
+This field must contain the installment payment types
+</ResponseField>
+<ResponseField name="number_of_installment_payments" type="String" >
+If installment purchase, indicates the number of installments.
+</ResponseField>
+<ResponseField name="installment_payment_number" type="String" >
+Contain the Installment Payment Number.
+</ResponseField>
+<ResponseField name="installment_payment_amount" type="String" >
+Contain the amount of each installment payment.
+</ResponseField>
+<ResponseField name="installment_payment_total_amount" type="String" >
+Contain the total amount of the installment payments.
+</ResponseField>
+<ResponseField name="installment_payment_currency_code" type="String" >
+Valid currency code as listed in the Base II Clearing Data Codes manual.
+</ResponseField>
+<ResponseField name="installment_interest_rate" type="String" >
+Contain the interest rate applied to installment payments with interest.
+</ResponseField>
+<ResponseField name="installment_payment_interest_amount" type="String" >
+Contain the installment payment interest amount.
+</ResponseField>
+<ResponseField name="vat_for_installment_payment_interest_amount" type="String" >
+Contain the value added tax (VAT) for the Installment Payment Interest Amount. 
+</ResponseField>
+<ResponseField name="installment_payment_risk_fee_amount" type="String" >
+Contain the total amount of the Installment Payment Risk Fee. 
+</ResponseField>
+<ResponseField name="vat_for_installment_payment_risk_fee_amount" type="String" >
+Contain the VAT for the Installment Payment Risk Fee Amount. 
+</ResponseField>
+<ResponseField name="installment_payment_frequency" type="String" >
+Contain the frequency of installment payments.
+</ResponseField>
+<ResponseField name="terminal_capability_profile_hex" type="String" >
+Contain the terminal capability from EMV data.
+</ResponseField>
+<ResponseField name="manual_key_entry" type="String" required>
+
+</ResponseField>
+<ResponseField name="mag_stripe_read_capability" type="String" required>
+
+</ResponseField>
+<ResponseField name="chip_read_capability" type="String" required>
+
+</ResponseField>
+<ResponseField name="offline_plaintext_pin_supported" type="String" >
+
+</ResponseField>
+<ResponseField name="online_pin_allowed" type="String" required>
+
+</ResponseField>
+<ResponseField name="signature_capability" type="String" required>
+
+</ResponseField>
+<ResponseField name="offline_enciphered_pin_capability" type="String" required>
+
+</ResponseField>
+<ResponseField name="no_cvm_required_supported" type="String" required>
+
+</ResponseField>
+<ResponseField name="static_data_authen_supported" type="String" >
+
+</ResponseField>
+<ResponseField name="dynamic_data_authentication" type="String" >
+
+</ResponseField>
+<ResponseField name="card_capture_capability" type="String" required>
+
+</ResponseField>
+<ResponseField name="cda_supported" type="String" >
+
+</ResponseField>
+<ResponseField name="application_interchange_profile_hex" type="String" >
+Provides a series of indicators that reflect the specific functions supported by the chip card account.
+</ResponseField>
+<ResponseField name="static_data_authentication_supported" type="String" >
+
+</ResponseField>
+<ResponseField name="dynamic_data_authentication_supported" type="String" >
+
+</ResponseField>
+<ResponseField name="cardholder_verification_supported" type="String" >
+
+</ResponseField>
+<ResponseField name="terminal_risk_management_to_be_performed" type="String" >
+
+</ResponseField>
+<ResponseField name="issuer_authentication_supported" type="String" >
+
+</ResponseField>
+<ResponseField name="combined_dda_generate_ac_is_supported" type="String" >
+
+</ResponseField>
+<ResponseField name="msd_is_supported" type="String" >
+
+</ResponseField>
+<ResponseField name="mobile_handset" type="String" >
+
+</ResponseField>
+<ResponseField name="cardholder_id_method" type="String" >
+Indicates the method by which the cardholder’s identity was verified at the point of service.
+</ResponseField>
+<ResponseField name="electronic_commerce_goods_indicator" type="String" >
+Indicates the type of goods that were purchased on the Internet.
+</ResponseField>
+<ResponseField name="interchange_fee_amount" type="String" >
+Interchange fee amount (in the settlement currency of the member) calculated by network for this transaction.
+</ResponseField>
+<ResponseField name="interchange_fee_sign" type="String" >
+Specifies if the interchange fee amount is a credit or a debit for the receiving member.
+</ResponseField>
+<ResponseField name="source_currency_to_base_currency_exchange_rate" type="String" >
+Specifies the currency exchange rate applied to this transaction when network converts the source amount to the transaction amount in the destination currency.
+</ResponseField>
+<ResponseField name="base_currency_to_destination_currency_exchange_rate" type="String" >
+Specifies the currency exchange rate applied to this transaction when network converts the transaction amount to the source amount in the destination currency.
+</ResponseField>
+<ResponseField name="program_id" type="String" >
+Program identifier.
+</ResponseField>
+<ResponseField name="dynamic_currency_conversion_dcc_indicator" type="String" >
+Contain a value that indicates whether dynamic currency conversion (DCC) has been applied.
+</ResponseField>
+<ResponseField name="auth_char_indicator" type="String" >
+Authorization Characteristics Indicator
+</ResponseField>
+<ResponseField name="market_specific_data_indicator" type="String" >
+Code indicating the industry for which market-specific authorization data was included in the transaction.
+</ResponseField>
+<ResponseField name="message_reason_code" type="String" >
+Message Reason Code including Fee Collection Reason Codes, Advice Reason Codes, Adjustment Reason Codes, Service Confirmation/Change Notification Reason Codes, Chargeback Reason Codes, etc
+</ResponseField>
+<ResponseField name="moto_eci_indicator" type="String" required>
+Indicates transaction performed by mail order,  telephone, or electronic commerce.
+</ResponseField>
+<ResponseField name="pos_entry_mode" type="String" required>
+Identifies the method used to enter the cardholder account number and card expiration date. This code specifies whether the entire magnetic stripe is included in an authorization or financial request.
+</ResponseField>
+<ResponseField name="transaction_identifier" type="String" >
+An identifier assigned by Network to help uniquely identify a transaction and to link subsequent transactions, such as a reversal, to an original. 
+</ResponseField>
+<ResponseField name="merchant_category_code" type="String" required>
+Contains a code describing the merchant's type of business product or service, also known as the merchant category code (MCC).
+</ResponseField>
+<ResponseField name="cryptogram_unpredictable_number" type="String" >
+Contains the number used in the generation of the cryptogram for chip transactions.
+</ResponseField>
+<ResponseField name="issuer_application_data" type="String" >
+Issuer Application Data(Hex)
+</ResponseField>
+<ResponseField name="terminal_application_version_number" type="String" >
+Version of the cryptogram algorithm was used for ARQC, TC, AAC, or ARPC generation.
+</ResponseField>
+<ResponseField name="application_transaction_counter" type="String" >
+Contains a count of the transactions performed within the card application.
+</ResponseField>
+<ResponseField name="transaction_sequence_counter" type="String" >
+Contain the transaction sequence counter from EMV data 
+</ResponseField>
+<ResponseField name="application_identifier_terminal" type="String" >
+Contains the Application ID (AID) that was selected for transaction routing.
+</ResponseField>
+<ResponseField name="terminal_country_code" type="String" >
+Contains the country code of the country where the terminal is located. 
+</ResponseField>
+<ResponseField name="terminal_transaction_date" type="String" >
+Contains the local date at the terminal on which the transaction was authorized. 
+</ResponseField>
+<ResponseField name="terminal_transaction_type" type="String" >
+
+</ResponseField>
+<ResponseField name="terminal_serial_number" type="String" >
+
+</ResponseField>
+<ResponseField name="cryptogram_amount" type="String" >
+The transaction amount used by the chip when calculating the cryptogram.
+</ResponseField>
+<ResponseField name="cryptogram_currency_code" type="String" >
+Cryptogram Currency Code
+</ResponseField>
+<ResponseField name="chip_condition_code" type="String" >
+Provides information about fallback transactions, which are initiated from the magnetic-stripe cards at terminals.
+</ResponseField>
+<ResponseField name="contactless_form_factor_indicator" type="String" >
+Contains indicators related to the attributes of the cardholder's device and the technology used for the communication between the cardholder's device and the acquiring device. 
+</ResponseField>
+<ResponseField name="agent_unique_id" type="String" >
+contain a valid Agent Unique ID value defined by Visa Europe (VE).
+</ResponseField>
+<ResponseField name="network_identification_code" type="String" >
+Contains a code that specifies the network to be used for transmission of the message and determines the program rules that apply to the transaction.
+</ResponseField>
+<ResponseField name="contact_for_information" type="String" >
+Contain contact information for Plus transactions
+</ResponseField>
+<ResponseField name="adjustment_processing_indicator" type="String" >
+contain an indicator if adjustment processing occurred on the original transaction.
+</ResponseField>
+<ResponseField name="dispute_condition" type="String" >
+Contain the dispute condition assigned through the Visa Claims Resolution (VCR) process.
+</ResponseField>
+
+
+
+<ResponseField name="surcharge_fee_debit_credit_ind" type="String" >
+Specifies that the fee is a credit or debit to a cardholder account.
+</ResponseField>
+<ResponseField name="surcharge_fee_amount" type="String" >
+Contain an acquirer-assessed cash disbursement access fee or POS transaction surcharge for informational purposes only.
+</ResponseField>
+<ResponseField name="surcharge_fee_cardholder_billing_amount" type="String" >
+Additional Amounts: Contains the surcharge amount in the cardholder’s billing currency.
+</ResponseField>
+<ResponseField name="cashback_amount" type="String" >
+Contains the purchase cashback amount expressed in the acquirer transaction  currency.
+</ResponseField>
+<ResponseField name="cryptogram_cashback_amount" type="String" >
+Cryptogram Cashback Amount
+</ResponseField>
+<ResponseField name="settlement_amount_usd" type="String" >
+Settlement Amount converted to USD
+</ResponseField>
+<ResponseField name="settlement_amount_usd_debit_credit_ind" type="String" >
+Indicates the sign of the amount in the Settlement Amount converted to  USD
+</ResponseField>
+<ResponseField name="acceptor_country_subdivision_code" type="String" >
+The state, province, or region code of the card acceptor’s billing or physical address for nonface- to-face or internet transactions.
+</ResponseField>
+<ResponseField name="original_reconciliation_amount" type="String" >
+Contains the original Reconciliation amount from the original message.
+</ResponseField>
+<ResponseField name="terminal_type_icc" type="String" >
+Indicates the type of cardholder activated terminal used by the cardholder to initiate the transaction. Tag 9F35
+</ResponseField>
+<ResponseField name="terminal_operating_environment" type="String" >
+Indicates whether the card acceptor is attending the terminal and the location of the terminal.
+</ResponseField>
+<ResponseField name="card_present_data" type="String" >
+Indicates if the card is present at the point of service.
+</ResponseField>
+<ResponseField name="reconciliation_conversion_rate" type="String" >
+Factor used in converting transaction amount to reconciliation amount.
+</ResponseField>
+<ResponseField name="reconciliation_cycle" type="String" >
+Identifies a reconciliation period in a reconciliation date.
+</ResponseField>
+<ResponseField name="settlement_cycle" type="String" >
+Identifies a settlement period in a settlement date.
+</ResponseField>
+<ResponseField name="function_code" type="String" >
+Indicates the specific purpose for a message.
+</ResponseField>
+<ResponseField name="cardholder_authentication_entity" type="String" >
+Indicates the entity through which the cardholder’s identity was verified at the point of service.
+</ResponseField>
+<ResponseField name="card_data_output_capability" type="String" >
+Indicates the ability of the terminal to write or output data to a card.
+</ResponseField>
+<ResponseField name="terminal_data_output_capability" type="String" >
+Indicates the print and display capabilities of the terminal.
+</ResponseField>
+<ResponseField name="pin_capture_capability" type="String" >
+Indicates the maximum number of PIN characters that the POS terminal can capture.
+</ResponseField>
+<ResponseField name="cryptogram_information_data" type="String" >
+Cryptogram information data
+</ResponseField>
+<ResponseField name="transaction_category_code" type="String" >
+Transaction category code
+</ResponseField>
+<ResponseField name="arpc_cryptogram" type="String" >
+Arpc cryptogram
+</ResponseField>
+<ResponseField name="surcharge_account_type" type="String" >
+Surcharge account type
+</ResponseField>
+<ResponseField name="surcharge_amount_type" type="String" >
+Surcharge amount type
+</ResponseField>
+<ResponseField name="surcharge_fee_cardholder_currency_code" type="String" >
+Surcharge fee cardholder currency code
+</ResponseField>
+<ResponseField name="surcharge_fee_cardholder_debit_credit_ind" type="String" >
+Surcharge fee cardholder debit credit ind
+</ResponseField>
+<ResponseField name="settlement_service_level_code" type="String" >
+Identifies the settlement level of the settlement service.
+</ResponseField>
+<ResponseField name="healthcare_eligibility_account_type" type="String" >
+Healthcare eligibility account type
+</ResponseField>
+<ResponseField name="healthcare_eligibility_amount_type" type="String" >
+Healthcare eligibility amount type
+</ResponseField>
+<ResponseField name="healthcare_eligibility_currency_code" type="String" >
+Healthcare eligibility currency code
+</ResponseField>
+<ResponseField name="healthcare_eligibility_debit_credit_ind" type="String" >
+Healthcare eligibility debit credit ind
+</ResponseField>
+<ResponseField name="healthcare_eligibility_amount" type="String" >
+Healthcare Eligibility Amount
+</ResponseField>
+<ResponseField name="prescription_eligibility_account_type" type="String" >
+Prescription eligibility account type
+</ResponseField>
+<ResponseField name="prescription_eligibility_amount_type" type="String" >
+Prescription eligibility amount type
+</ResponseField>
+<ResponseField name="prescription_eligibility_currency_code" type="String" >
+Prescription eligibility currency code
+</ResponseField>
+<ResponseField name="prescription_eligibility_debit_credit_ind" type="String" >
+Prescription eligibility debit credit ind
+</ResponseField>
+<ResponseField name="prescription_eligibility_amount" type="String" >
+Prescription Eligibility Amount
+</ResponseField>
+<ResponseField name="vision_rx_eligibility_account_type" type="String" >
+Vision rx eligibility account type
+</ResponseField>
+<ResponseField name="vision_rx_eligibility_amount_type" type="String" >
+Vision rx eligibility amount type
+</ResponseField>
+<ResponseField name="vision_rx_eligibility_currency_code" type="String" >
+Vision rx eligibility currency code
+</ResponseField>
+<ResponseField name="vision_rx_eligibility_debit_credit_ind" type="String" >
+Vision rx eligibility debit credit ind
+</ResponseField>
+<ResponseField name="vision_rx_eligibility_amount" type="String" >
+Vision Rx Eligibility Amount
+</ResponseField>
+<ResponseField name="prepaid_online_bill_pay_fee_account_type" type="String" >
+Prepaid online bill pay fee account type
+</ResponseField>
+<ResponseField name="prepaid_online_bill_pay_fee_amount_type" type="String" >
+Prepaid online bill pay fee amount type
+</ResponseField>
+<ResponseField name="prepaid_online_bill_pay_fee_currency_code" type="String" >
+Prepaid online bill pay fee currency code
+</ResponseField>
+<ResponseField name="prepaid_online_bill_pay_fee_debit_credit_ind" type="String" >
+Prepaid online bill pay fee debit credit ind
+</ResponseField>
+<ResponseField name="prepaid_online_bill_pay_fee_amount" type="String" >
+Prepaid Online Bill Pay Fee Amount
+</ResponseField>
+<ResponseField name="cashback_account_type" type="String" >
+Cashback account type
+</ResponseField>
+<ResponseField name="cashback_amount_type" type="String" >
+Cashback amount type
+</ResponseField>
+<ResponseField name="cashback_currency_code" type="String" >
+Cashback currency code
+</ResponseField>
+<ResponseField name="cashback_debit_credit_ind" type="String" >
+Cashback debit credit ind
+</ResponseField>
+<ResponseField name="gratuity_account_type" type="String" >
+Gratuity account type
+</ResponseField>
+<ResponseField name="gratuity_amount_type" type="String" >
+Gratuity amount type
+</ResponseField>
+<ResponseField name="gratuity_currency_code" type="String" >
+Gratuity currency code
+</ResponseField>
+<ResponseField name="gratuity_debit_credit_ind" type="String" >
+Gratuity debit credit ind
+</ResponseField>
+<ResponseField name="gratuity_amount" type="String" >
+Gratuity Amount
+</ResponseField>
+<ResponseField name="original_transaction_amount_account_type" type="String" >
+Original transaction amount account type
+</ResponseField>
+<ResponseField name="original_transaction_amount_amount_type" type="String" >
+Original transaction amount amount type
+</ResponseField>
+<ResponseField name="original_transaction_amount_currency_code" type="String" >
+Original transaction amount currency code
+</ResponseField>
+<ResponseField name="original_transaction_amount_debit_credit_ind" type="String" >
+Original transaction amount debit credit ind
+</ResponseField>
+<ResponseField name="original_transaction_amount" type="String" >
+Original transaction amount
+</ResponseField>
+<ResponseField name="poi_amount_account_type" type="String" >
+Poi amount account type
+</ResponseField>
+<ResponseField name="poi_amount_amount_type" type="String" >
+Poi amount amount type
+</ResponseField>
+<ResponseField name="poi_amount_currency_code" type="String" >
+Poi amount currency code
+</ResponseField>
+<ResponseField name="poi_amount_debit_credit_ind" type="String" >
+Poi amount debit credit ind
+</ResponseField>
+<ResponseField name="poi_amount_amount" type="String" >
+POI Amount
+</ResponseField>
+<ResponseField name="additional_data_1" type="String" >
+Additional data 1
+</ResponseField>
+<ResponseField name="additional_data_2" type="String" >
+Additional data 2
+</ResponseField>
+<ResponseField name="additional_data_3" type="String" >
+Additional data 3
+</ResponseField>
+<ResponseField name="additional_data_4" type="String" >
+Additional data 4
+</ResponseField>
+<ResponseField name="additional_data_5" type="String" >
+Additional data 5
+</ResponseField>
+<ResponseField name="transaction_life_cycle_id" type="String" >
+All life cycle messages such as authorizations, financials, reversals, retrievals, fulfillments, and chargebacks are linked with the Life Cycle Support Indicator and Trace ID subfields
+</ResponseField>
+<ResponseField name="life_cycle_support_indicator" type="String" >
+Life Cycle Support Indicator 
+</ResponseField>
+<ResponseField name="settlement_service_transfer_agent_id_code" type="String" >
+Code identifies the transfer agent ID selected for the receiving customer.
+</ResponseField>
+<ResponseField name="settlement_service_transfer_agent_account" type="String" >
+Contains the agent’s bank account number for the receiving customer associated with the settlement service.
+</ResponseField>
+<ResponseField name="settlement_foreign_exchange_rate_class_code" type="String" >
+Iientifies the settlement level of the settlement service.
+</ResponseField>
+
+
         </Expandable>
     </ResponseField>
 
