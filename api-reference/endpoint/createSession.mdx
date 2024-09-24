@@ -432,7 +432,7 @@ curl --request POST \
 
 ```json 200
 {
-    "category": "question",
+    "category": "1",
     "sessionId": "1d8f00a9-467d-4a5a-852c-6f57d76263fb",
     "url": "https://{host}/visa/questionnaire",
     "data": {
@@ -1631,11 +1631,30 @@ Iientifies the settlement level of the settlement service.
 Response
 --- 
 
-    <ResponseField name="status" type="enum" required>
-      Status of the process. Allowed values - Success, Failed
-    </ResponseField>
+    <ResponseField name="category" type="Enum" required>
+Category for the question. Allowed values - 1 - Question, 2 - Close, 3 - Confirmation
+</ResponseField>
+<ResponseField name="sessionId" type="String" required>
+Unique identifier for this session
+</ResponseField>
+<ResponseField name="url" type="String" required>
+URL where the question answer should be submitted
+</ResponseField>
 
-    <ResponseField name="message" type="string" required>
-    Response message
-    </ResponseField>
+    <ResponseField name="data" type="Data Object">
+  <Expandable title="properties">
+  
+<ResponseField name="question_id" type="String" required>
+Unique identifier used to identify the question
+</ResponseField>
+<ResponseField name="type" type="Enum" required>
+Type of the question. Allowed values - 1- Options, 2- Text, 3 - Date, 4 - Button, 5 - Radiobutton
+</ResponseField>
+<ResponseField name="message" type="String" required>
+Title for the questions
+</ResponseField>
+
+  </Expandable>
+  </ResponseField>
+
 
