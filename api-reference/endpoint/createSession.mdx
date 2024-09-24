@@ -516,7 +516,330 @@ Cardholder name
      </Expandable>
     </ResponseField>
 
+    <ResponseField name="contact" type="Contact Object">
+     <Expandable title="properties">
+    <ResponseField name="email" type="String" required>
+Cardholder email - ID
+</ResponseField>
+<ResponseField name="mobile_no" type="String" optional>
+Cardholder mobile no
+</ResponseField>
+<ResponseField name="country_code" type="String" optional>
+Cardholder country code
+
+     </Expandable>
+    </ResponseField>
+
+    <ResponseField name="account_info" type="Account info Object">
+     <Expandable title="properties">
+   <ResponseField name="account_no" type="String" required>
+Cardholder account no
+</ResponseField>
+<ResponseField name="status" type="Enum" required>
+Account status
+</ResponseField>
+<ResponseField name="account_type" type="Enum required>
+Cardholder account type
+</ResponseField>
+
+
+     </Expandable>
+    </ResponseField>
+
+<ResponseField name="txn_data" type="Transaction data Object">
+ <ResponseField name="transaction_id" type="String">
+Transaction Identifier
+</ResponseField>
+<ResponseField name="auth_transactions" type="Auth transsaction Object">
+     <Expandable title="properties">
+   <ResponseField name="message_type_id" type="String" required>
+Message type identifier 
+</ResponseField>
+<ResponseField name="retrieval_reference_number" type="String" required>
+Contains a number that is used with other data elements as a key to identify and track all messages related to a given cardholder transaction.
+</ResponseField>
+<ResponseField name="authorization_code" type="String" required>
+Authorization Identification
+</ResponseField>
+<ResponseField name="response_action_code" type="String" required>
+The authorization code provided by the issuer when a transaction is approved or not approved.
+</ResponseField>
+<ResponseField name="original_message_type_id" type="String" >
+Message type identifier from the original message for the transaction being reversed.
+</ResponseField>
+<ResponseField name="account_funding_source" type="String" >
+Account funding source type
+</ResponseField>
+<ResponseField name="account_funding_source_subtype" type="String" >
+Account funding source sub-type
+</ResponseField>
+<ResponseField name="pin_entry_capability" type="String" required>
+The capability of the terminal device to support/accept authentication data.
+</ResponseField>
+<ResponseField name="chip_transaction_indicator" type="String" required>
+This 1-digit code is set by full VSDC data acquirers if they receive a message from the terminal that indicates a chip-based transaction.
+</ResponseField>
+<ResponseField name="cvv_result" type="String" required>
+Visa-defined code indicating Card Verification Value (CVV), iCVV (Integrated Chip Card CVV), or dCVV (dynamic CVV) verification results.
+</ResponseField>
+<ResponseField name="offline_data_authen_not_performed" type="String" >
+Terminal verification results: Offline data authentication not performed
+</ResponseField>
+<ResponseField name="static_data_authen_was_unsuccessful" type="String" >
+Terminal verification results: Static Data Authentication (SDA) failed
+</ResponseField>
+<ResponseField name="chip_data_missing" type="String" required>
+Terminal verification results: Chip data missing
+</ResponseField>
+<ResponseField name="pan_on_term_exception_file" type="String" >
+Terminal verification results: Primary account number on terminal exception File
+</ResponseField>
+<ResponseField name="dda_failed" type="String" >
+Terminal verification results: DDA failed
+</ResponseField>
+<ResponseField name="combined_dda_application_cryptogram_generation_failed" type="String" >
+Terminal verification results: Combined DDA/Application Cryptogram generation (CDA) failed
+</ResponseField>
+<ResponseField name="chip_and_terminal_different_version" type="String" >
+Terminal verification results: Chip and terminal are different application versions
+</ResponseField>
+<ResponseField name="expired_application" type="String" >
+Terminal verification results: Expired application
+</ResponseField>
+<ResponseField name="application_not_yet_effective" type="String" >
+Terminal verification results: Application not yet effective
+</ResponseField>
+<ResponseField name="requested_service_not_allowed_for_card_product" type="String" >
+Terminal verification results: Requested service not allowed for card product
+</ResponseField>
+<ResponseField name="new_card" type="String" >
+Terminal verification results: New card
+</ResponseField>
+<ResponseField name="cardholder_verify_was_not_successful" type="String" >
+Terminal verification results: Cardholder verification was not successful
+</ResponseField>
+<ResponseField name="unrecognized_cvm" type="String" >
+Terminal verification results: Unrecognized CVM
+</ResponseField>
+<ResponseField name="offline_pin_try_limit_exceeded" type="String" >
+Terminal verification results: Offline PIN try limit exceeded
+</ResponseField>
+<ResponseField name="pin_required_but_pin_pad_not_working_or_not_present" type="String" required>
+Terminal verification results: PIN entry required and PIN pad not working or not present
+</ResponseField>
+<ResponseField name="pin_required_but_not_entered" type="String" required>
+Terminal verification results: PIN entry required and PIN pad present, PIN not entered
+</ResponseField>
+<ResponseField name="online_pin_entered" type="String" required>
+Terminal verification results: Online PIN entered
+</ResponseField>
+<ResponseField name="transaction_exceeds_floor_limit" type="String" >
+Terminal verification results: Transaction exceeds floor limit
+</ResponseField>
+<ResponseField name="lower_offline_limit_exceeded" type="String" >
+Terminal verification results: Lower consecutive offline limit exceeded
+</ResponseField>
+<ResponseField name="upper_offline_limit_exceeded" type="String" >
+Terminal verification results: Upper consecutive offline limit exceeded
+</ResponseField>
+<ResponseField name="tran_selected_randomly_for_online_transmission" type="String" >
+Terminal verification results: Transaction selected randomly for online transmission
+</ResponseField>
+<ResponseField name="merchant_forced_transaction_online" type="String" >
+Terminal verification results: Merchant forced transaction online
+</ResponseField>
+<ResponseField name="default_tdol_used" type="String" >
+Terminal verification results: Default terminal data object list (TDOL) used
+</ResponseField>
+<ResponseField name="authentication_failed" type="String" >
+Terminal verification results: Issuer authentication failed
+</ResponseField>
+<ResponseField name="script_processing_failed_before_generating_final_cryptogram" type="String" >
+Terminal verification results: Script processing failed before generating final cryptogram
+</ResponseField>
+<ResponseField name="script_processing_failed_after_generating_final_cryptogram" type="String" >
+Terminal verification results: Script processing failed after generating final cryptogram
+</ResponseField>
+<ResponseField name="derivation_key_index" type="String" >
+contains an index into the issuer's list of keys used in the Online Card Authentication Method (Online CAM), Issuer Authentication, and validation of the clearing cryptogram.
+</ResponseField>
+<ResponseField name="second_cryptogram_type" type="String" >
+Second cryptogram type
+</ResponseField>
+<ResponseField name="first_cryptogram_type" type="String" >
+First cryptogram type
+</ResponseField>
+<ResponseField name="authentication_failed_cvr" type="String" >
+Authentication failed cvr
+</ResponseField>
+<ResponseField name="offline_pin_verification_performed" type="String" >
+Offline pin verification performed
+</ResponseField>
+<ResponseField name="offline_pin_verification_failed" type="String" >
+Offline pin verification failed
+</ResponseField>
+<ResponseField name="not_able_to_go_online" type="String" >
+Not able to go online
+</ResponseField>
+<ResponseField name="last_online_transaction_incomplete" type="String" >
+Last online transaction incomplete
+</ResponseField>
+<ResponseField name="pin_try_limit_exceeded" type="String" >
+Pin try limit exceeded
+</ResponseField>
+<ResponseField name="velocity_checking_counters_exceeded" type="String" >
+Velocity checking counters exceeded
+</ResponseField>
+<ResponseField name="new_card_cvr" type="String" >
+New card cvr
+</ResponseField>
+<ResponseField name="authentication_failed_last_transaction" type="String" >
+Authentication failed last transaction
+</ResponseField>
+<ResponseField name="authentication_not_performed_after_last_online_transaction" type="String" >
+Authentication not performed after last online transaction
+</ResponseField>
+<ResponseField name="pin_try_limit_exceeded_card_blocked" type="String" >
+Pin try limit exceeded card blocked
+</ResponseField>
+<ResponseField name="static_data_authentication_failed_last_transaction_not_able_to_go_online" type="String" >
+Static data authentication failed last transaction not able to go online
+</ResponseField>
+<ResponseField name="number_of_issuer_script_commands_1" type="String" >
+Number of issuer script commands 1
+</ResponseField>
+<ResponseField name="number_of_issuer_script_commands_2" type="String" >
+Number of issuer script commands 2
+</ResponseField>
+<ResponseField name="number_of_issuer_script_commands_3" type="String" >
+Number of issuer script commands 3
+</ResponseField>
+<ResponseField name="number_of_issuer_script_commands_4" type="String" >
+Number of issuer script commands 4
+</ResponseField>
+<ResponseField name="issuer_script_processing_failed" type="String" >
+Issuer script processing failed
+</ResponseField>
+<ResponseField name="dda_failed_previous_transaction_declined_offline" type="String" >
+Dda failed previous transaction declined offline
+</ResponseField>
+<ResponseField name="dda_performed" type="String" >
+Dda performed
+</ResponseField>
+<ResponseField name="cavv_auth_result_code" type="String" >
+3-D Secure Authentication Results Code
+</ResponseField>
+<ResponseField name="cavv_second_factor_auth_code" type="String" >
+2nd Factor Authentication Code
+</ResponseField>
+<ResponseField name="cavv_key_indicator" type="String" >
+CAVV Key Indicator
+</ResponseField>
+<ResponseField name="cavv_value" type="String" >
+3-digit code generated by the issuer's ACS that may be used by the issuer to validate the authentication response during authorization.
+</ResponseField>
+<ResponseField name="cavv_unpredictable_number" type="String" >
+4-digit code that contains the four least significant digits for the authentication tracking number.
+</ResponseField>
+<ResponseField name="cavv_auth_tracking_number" type="String" >
+Authentication Tracking Number
+</ResponseField>
+<ResponseField name="cavv_version" type="String" >
+CAVV version number
+</ResponseField>
+<ResponseField name="cavv_auth_action" type="String" >
+CAVV Authentication Action
+</ResponseField>
+<ResponseField name="cardholder_ip_address" type="String" >
+The client IP address submitted in the authorization message 
+</ResponseField>
+<ResponseField name="cryptogram" type="String" >
+Contains the chip application cryptogram 
+</ResponseField>
+<ResponseField name="cvv2_present_indicator" type="String" >
+Code to indicate that the CVV2 value is on the card.
+</ResponseField>
+<ResponseField name="3d_secure_protocol_version_number" type="String" >
+3-D Secure Protocol Version Number
+</ResponseField>
+<ResponseField name="cavv_type" type="String" >
+CAVV Type
+</ResponseField>
+<ResponseField name="cavv_version_number" type="String" >
+CAVV Version Number
+</ResponseField>
+<ResponseField name="decision_manager_result" type="String" >
+Fraud management 
+</ResponseField>
+<ResponseField name="device_id_velocity" type="String" >
+Device ID velocity
+</ResponseField>
+<ResponseField name="consumer_ip_address_velocity" type="String" >
+Consumer IP Address velocity
+</ResponseField>
+<ResponseField name="cavv_result" type="String" >
+CAVV Result
+</ResponseField>
+<ResponseField name="cavv_response" type="String" >
+SCVV/CAVV Response
+</ResponseField>
+<ResponseField name="risk_score" type="String" >
+Risk Score
+</ResponseField>
+<ResponseField name="authorization_date" type="String" required>
+Authorization Date
+</ResponseField>
+<ResponseField name="authorization_time" type="String" required>
+Authorization Time
+</ResponseField>
+<ResponseField name="auth_amount_usd" type="String" required>
+Authorized Amount  converted to  USD
+</ResponseField>
+<ResponseField name="auth_amount_usd_debit_credit_ind" type="String" >
+Indicates the sign of the amount in the Authorized Amount  converted to  USD
+</ResponseField>
+<ResponseField name="merchant_floor_limit_amount" type="String" >
+Merchant Floor Limit
+</ResponseField>
+<ResponseField name="token_type" type="String" >
+Token Type
+</ResponseField>
+<ResponseField name="token_status" type="String" >
+Token Status
+</ResponseField>
+<ResponseField name="track_three_data" type="String" >
+Track three data
+</ResponseField>
+<ResponseField name="transaction_analysis_overview" type="String" >
+Transaction analysis overview
+</ResponseField>
+<ResponseField name="transaction_analysis_test results" type="String" >
+Transaction analysis test results
+</ResponseField>
+<ResponseField name="banknet_reference_number" type="String" >
+Reference number is guaranteed to be a unique value for any transaction within the specified financial network on any processing day
+</ResponseField>
+     </Expandable>
+    </ResponseField>
      
+     <ResponseField name="sale_transactions" type="Sale transactions Object">
+     <Expandable title="properties">
+
+     </Expandable>
+    </ResponseField>
+
+    <ResponseField name="auth_reversal_transactions" type="Sale transactions Object">
+     <Expandable title="properties">
+     
+     </Expandable>
+    </ResponseField>
+
+    <ResponseField name="credit_transactions" type="Sale transactions Object">
+     <Expandable title="properties">
+     
+     </Expandable>
+    </ResponseField>
+
 </Expandable>
 </ResponseField>
 
