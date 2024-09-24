@@ -2,3 +2,162 @@
 title: 'Create session'
 openapi: 'POST /udm/v1/start/session'
 ---
+
+## API Specification
+
+| Field  | Description  | Type  |Format|Length| Example|Required|
+|---|---|---|---|---|---|---|
+|  apiKey |  Unique identifier | String  | 	AB  | 32  |3e23e816503bcd6a8a29b7b4c1e3d5a7|M|
+
+
+<ParamField path="network" type="string">
+  An example of a parameter field
+</ParamField>
+
+<RequestExample>
+```bash request
+curl --request POST \
+  --url 'http://{{host}}/udm/v1/{network}/questionnaire' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "question_id": "3",
+  "question_ans": "Y",
+  "dispute_amount": "",
+  "isPartialDispute": true,
+  "comments": "have entered the amount",
+  "files": [
+    {
+      "file": "base 64 encoded data",
+      "type": "jpeg",
+      "name": "name.jpeg",
+      "category": "proof"
+    }
+  ]
+}'
+```
+</RequestExample>
+
+
+<ResponseExample>
+```json example-0
+{
+  "category": "question",
+  "url": "https://{{host}}/visa/questionnaire",
+  "data": {
+    "id": "13",
+    "type": "options",
+    "message": "What is the issue you want to raise a complaint in?",
+    "options": [
+      {
+        "question_id": "13.1",
+        "option": "Goods/Services",
+        "disabled": false
+      },
+      {
+        "question_id": "13.2",
+        "option": "Subscription",
+        "disabled": false
+      },
+      {
+        "question_id": "13.3",
+        "option": "ATM transaction",
+        "disabled": false
+      },
+      {
+        "question_id": "13.4",
+        "option": "Credit",
+        "disabled": false
+      },
+      {
+        "question_id": "12.2",
+        "option": "Incorrect processing",
+        "disabled": false
+      },
+      {
+        "question_id": "12.6",
+        "option": "Charged more than once",
+        "disabled": false
+      },
+      {
+        "question_id": "11",
+        "option": "Authorization related issue",
+        "disabled": false
+      },
+      {
+        "question_id": "13.5",
+        "option": "Others",
+        "disabled": false
+      }
+    ],
+    "comments": false
+  }
+}
+```
+
+```json example-1
+{
+  "category": "question",
+  "url": "https://{{host}}/visa/questionnaire",
+  "data": {
+    "id": "13",
+    "type": "options",
+    "message": "What is the issue you want to raise a complaint in?",
+    "options": [
+      {
+        "question_id": "13.1",
+        "option": "Goods/Services",
+        "disabled": false
+      },
+      {
+        "question_id": "13.2",
+        "option": "Subscription",
+        "disabled": false
+      },
+      {
+        "question_id": "13.3",
+        "option": "ATM transaction",
+        "disabled": false
+      },
+      {
+        "question_id": "13.4",
+        "option": "Credit",
+        "disabled": false
+      },
+      {
+        "question_id": "12.2",
+        "option": "Incorrect processing",
+        "disabled": false
+      },
+      {
+        "question_id": "12.6",
+        "option": "Charged more than once",
+        "disabled": false
+      },
+      {
+        "question_id": "11",
+        "option": "Authorization related issue",
+        "disabled": false
+      },
+      {
+        "question_id": "13.5",
+        "option": "Others",
+        "disabled": false
+      }
+    ],
+    "comments": false
+  }
+}
+```
+</ResponseExample>
+
+<ResponseField name="user" type="User Object">
+  <Expandable title="properties">
+    <ResponseField name="full_name" type="string">
+      The full name of the user
+    </ResponseField>
+
+    <ResponseField name="is_over_21" type="boolean" required>
+      Whether the user is over 21 years old
+    </ResponseField>
+  </Expandable>
+</ResponseField>

@@ -48,7 +48,6 @@
       "group": "Endpoint Examples",
       "pages": [
         "api-reference/endpoint/generateKey",
-        "api-reference/endpoint/delete",
         "api-reference/endpoint/cardBlock",
         "api-reference/endpoint/createSession",
         "api-reference/endpoint/questionnaire",

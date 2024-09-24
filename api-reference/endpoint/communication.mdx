@@ -2,3 +2,150 @@
 title: 'Communication'
 openapi: 'POST /udm/v1/communication'
 ---
+
+<Card title="POST /udm/v1/communication" horizontal>
+</Card>
+
+Hosts can use this endpoint to send an email that includes a cardholder letter. This feature is essential for ensuring that cardholders receive timely notifications and updates regarding their disputes.
+
+
+Authorization - API key
+---
+ <ResponseField name="Key" type="string" required>
+      x-api-key
+    </ResponseField>
+
+    <ResponseField name="Value" type="string" required>
+     value
+    </ResponseField>  
+
+
+<RequestExample>
+
+```bash request
+curl --request POST \
+  --url 'http://{{host}}/udm/v1/card-block' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "recipient_email": "testuser@test.com",
+    "subject": "Notification",
+    "sender_name": "udm",
+    "files": [
+        {
+            "file": "base 64 encoded data",
+            "type": "pdf",
+            "name": "sample.pdf"
+        }
+    ]
+}'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json 200
+{
+    "status":"Success",
+    "message":"Mail sent successfully"
+}
+```
+
+```json 400
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 400,
+    "title": "INVALID_REQUEST",
+    "message": [
+        {
+            "errorMessage": ""
+        }
+    ]
+}
+```
+
+```json 403
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 403,
+    "title": "ACCESS_DENIED",
+    "message": [
+        {
+            "errorMessage": "Access to this resource is forbidden."
+        }
+    ]
+}
+```
+
+```json 422
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 422,
+    "title":"UNPROCESSABLE_ENTITY",
+    "message": [
+        {
+            "errorMessage": ""
+        }
+    ]
+}
+```
+
+```json 500
+{
+    "timestamp": "2024-06-05T15:19:49.2490927",
+    "status": 500,
+    "title":"INTERNAL_SERVER_ERROR",
+    "message": [
+        {
+            "errorMessage": "Something went wrong, try again later"
+        }
+    ]
+}
+```
+</ResponseExample>
+
+Body
+--- 
+
+<ResponseField name="Communication" type="Communication Object">
+  <Expandable title="properties">
+    <ResponseField name="recipient_email" type="string" required>
+     Recipient mail address
+    </ResponseField>
+
+    <ResponseField name="subject" type="string" required>
+     Subject for the mailSubject for the mail
+    </ResponseField>
+
+     <ResponseField name="sender_name" type="string" required>
+      Sender name
+    </ResponseField>
+
+    <ResponseField name="Files" type="File Object">
+        <Expandable title="properties">
+        <ResponseField name="file" type="string" required>
+        Base 64 encoded data string
+        </ResponseField>
+
+        <ResponseField name="type" type="string" required>
+        Type of the file
+        </ResponseField>
+
+        <ResponseField name="name" type="string" required>
+        Name of the file
+        </ResponseField>
+        </Expandable>
+    </ResponseField>
+</Expandable>
+</ResponseField>
+
+Response
+--- 
+
+    <ResponseField name="status" type="enum" required>
+      Status of the process. Allowed values - Success, Failed
+    </ResponseField>
+
+    <ResponseField name="message" type="string" required>
+    Response message
+    </ResponseField>
+
