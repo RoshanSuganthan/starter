@@ -1587,19 +1587,79 @@ Iientifies the settlement level of the settlement service.
     </ResponseField>
 
     
-    <ResponseField name="auth_reversal_transactions" type="AuthReversal Object">
+    <ResponseField name="auth_reversal_transactions" type="Auth reversal transaction Object">
         <Expandable title="properties">
-            <ResponseField name="status" type="enum" required>
-            Status of the process. Allowed values - Success, Failed
-            </ResponseField>
+           <ResponseField name="message_type_id" type="String" required>
+Message type identifier 
+</ResponseField>
+
+<ResponseField name="retrieval_reference_number" type="String" required>
+Contains a number that is used with other data elements as a key to identify and track all messages related to a given cardholder transaction.
+</ResponseField>
+
+
+<ResponseField name="authorization_code" type="String" required>
+Authorization Identification
+</ResponseField>
+
+
+<ResponseField name="authorization_date" type="String" required>
+Authorization Date
+</ResponseField>
+<ResponseField name="authorization_time" type="String" required>
+Authorization Time
+</ResponseField>
+
+
+<ResponseField name="auth_amount_usd" type="String" required>
+Authorized Amount  converted to  USD
+</ResponseField>
+<ResponseField name="auth_amount_usd_debit_credit_ind" type="String" >
+Indicates the sign of the amount in the Authorized Amount  converted to  USD
+</ResponseField>
+
+<ResponseField name="response_action_code" type="String" required>
+The authorization code provided by the issuer when a transaction is approved or not approved.
+</ResponseField>
+
         </Expandable>
     </ResponseField>
 
-    <ResponseField name="credit_transactions" type="Credit Object">
+    <ResponseField name="credit_transactions" type="Credit transaction Object">
         <Expandable title="properties">
-            <ResponseField name="status" type="enum" required>
-            Status of the process. Allowed values - Success, Failed
-            </ResponseField>
+            <ResponseField name="message_type_id" type="String" required>
+Message type identifier 
+</ResponseField>
+
+<ResponseField name="retrieval_reference_number" type="String" required>
+Contains a number that is used with other data elements as a key to identify and track all messages related to a given cardholder transaction.
+</ResponseField>
+
+
+<ResponseField name="authorization_code" type="String" required>
+Authorization Identification
+</ResponseField>
+
+
+<ResponseField name="authorization_date" type="String" required>
+Authorization Date
+</ResponseField>
+<ResponseField name="authorization_time" type="String" required>
+Authorization Time
+</ResponseField>
+
+
+<ResponseField name="auth_amount_usd" type="String" required>
+Authorized Amount  converted to  USD
+</ResponseField>
+<ResponseField name="auth_amount_usd_debit_credit_ind" type="String" >
+Indicates the sign of the amount in the Authorized Amount  converted to  USD
+</ResponseField>
+
+<ResponseField name="response_action_code" type="String" required>
+The authorization code provided by the issuer when a transaction is approved or not approved.
+</ResponseField>
+
         </Expandable>
     </ResponseField>
 
