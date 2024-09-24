@@ -119,13 +119,9 @@ curl --request POST \
 
 Authorization - API key
 ---
- <ResponseField name="Key" type="string" required>
+<ResponseField name="x-api-key" type="string" required>
       x-api-key
-    </ResponseField>
-
-    <ResponseField name="Value" type="string" required>
-     value
-    </ResponseField>  
+</ResponseField>
 
 Headers
 ---
@@ -135,45 +131,45 @@ Headers
 
 Body
 --- 
-<ResponseField name="Questionnaire" type="Questionnaire Object">
+<ResponseField name="questionnaire" type="Questionnaire Object">
   <Expandable title="properties">
     <ResponseField name="question_id" type="string" required>
-      question_id for the response
+      Unique identifier used to identify the question
     </ResponseField>
 
     <ResponseField name="question_ans" type="string" required>
-     answer for the request
+     User's response to a questionnaire
     </ResponseField>
 
      <ResponseField name="isPartialDispute" type="boolean" required>
-      is the case partial or not
+      Flag to identify the dispute is partial or full
     </ResponseField>
 
-    <ResponseField name="dispute_amount" type="double">
-     dispute amount for the case
+    <ResponseField name="dispute_amount" type="double" required>
+     Amount associated with the transaction
     </ResponseField>
 
     <ResponseField name="comments" type="string">
-     user comments 
+    User comments
     </ResponseField>
 
     <ResponseField name="File" type="File Object">
         <Expandable>
 
-        <ResponseField name="file" type="string" required>
-            file in base 64 encoded
+        <ResponseField name="file" type="string">     	
+            Base 64 encoded data string
         </ResponseField>
 
         <ResponseField name="type" type="string">
-            type of the image
+            Type of the file
         </ResponseField>
 
         <ResponseField name="name" type="string">
-            name of the file 
+            Name of the file 
         </ResponseField>
 
         <ResponseField name="category" type="string">
-            category of the file 
+           Category for the file
         </ResponseField>
         </Expandable>
     </ResponseField>
@@ -184,7 +180,7 @@ Body
 Response
 ---
 
-<ResponseField name="QuestionnaireResponse" type="Questionnaire Response Object">
+<ResponseField name="questionnaire_response" type="Questionnaire Response Object">
   <Expandable title="properties">
     <ResponseField name="category" type="enum" required>
       Category for the question. Allowed values - 1 - Question, 2 - Close, 3 - Confirmation

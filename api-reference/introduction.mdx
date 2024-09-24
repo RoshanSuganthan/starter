@@ -1,19 +1,25 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: ''
 ---
+The following endpoints enable financial institutions to integrate with the **Unified Dispute Management (UDM)** platform, providing seamless access to data for effective dispute management.
 
-## Welcome
-Refer the UDM API docs
+## Data Retrieval Considerations
 
-## Authentication
+Before initiating data retrieval, clients should evaluate the following approaches for conducting **Authorization** and **Transaction Inquiries**.
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+## Transaction Inquiry
+UDM offers two approaches for conducting **Authorization** and **Transaction Inquiries**:
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+### Approach 1:
+When initiating the **Create Session** request, clients can submit all necessary authorization and transaction data. Upon successful session creation, the client can proceed to the **Questionnaire** endpoint for further processing.
+
+### Approach 2:
+Alternatively, clients can provide minimal information, such as PAN, ARN, transaction date, amount, transaction Id, RRN, or custom fields, when initiating the **Create Session**. This triggers the **Transaction Inquiry** endpoint, which automatically retrieves all relevant authorization and transaction data.
+
+<Note> Providing UDM with the most accurate authorization and transaction data from the card network will optimize auto-decisioning and workflow automation.</Note>
+
+## Customization and Workflow Flexibility
+
+Financial institutions can select the most suitable approach based on their existing systems and infrastructure. The modular design of these endpoints allows UDM to execute workflows, automation, and auto-decisioning efficiently. Clients also have the flexibility to request customizations within certain limits, without impacting the platform's core functionality.
+The core logic adheres to card network rules, ensuring proper validation of authorization and transaction parameters and seamless integration with the card network interface.

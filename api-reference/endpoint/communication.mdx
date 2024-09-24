@@ -11,14 +11,9 @@ Hosts can use this endpoint to send an email that includes a cardholder letter. 
 
 Authorization - API key
 ---
- <ResponseField name="Key" type="string" required>
+<ResponseField name="x-api-key" type="string" required>
       x-api-key
-    </ResponseField>
-
-    <ResponseField name="Value" type="string" required>
-     value
-    </ResponseField>  
-
+</ResponseField>
 
 <RequestExample>
 
@@ -114,7 +109,7 @@ Body
     </ResponseField>
 
     <ResponseField name="subject" type="string" required>
-     Subject for the mailSubject for the mail
+     Subject for the mail
     </ResponseField>
 
      <ResponseField name="sender_name" type="string" required>
@@ -124,15 +119,15 @@ Body
     <ResponseField name="files" type="File Object">
         <Expandable title="properties">
         <ResponseField name="file" type="string" required>
-        Base 64 encoded data string
+         Base 64 encoded data string
         </ResponseField>
 
         <ResponseField name="type" type="string" required>
-        Type of the file
+         Type of the file
         </ResponseField>
 
         <ResponseField name="name" type="string" required>
-        Name of the file
+         Name of the file
         </ResponseField>
         </Expandable>
     </ResponseField>

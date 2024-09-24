@@ -8,16 +8,11 @@ openapi: 'POST /udm/v1/start/session'
 
 Hosts can use this endpoint to initiate a new session, which is necessary before creating a questionnaire. The response will include a session ID, a URL, and an initial question.
 
-<Note>Hosts must include the session ID in subsequent questionnaire submissions to the provided URL.</Note>
 Authorization - API key
 ---
- <ResponseField name="Key" type="string" required>
+<ResponseField name="x-api-key" type="string" required>
       x-api-key
-    </ResponseField>
-
-    <ResponseField name="Value" type="string" required>
-     value
-    </ResponseField>  
+</ResponseField>
 
 
 <RequestExample>
@@ -137,7 +132,6 @@ curl --request POST \
         },
         "sale_transactions": [
             {
-                "acquirer_case_number": "0",
                 "system_trace_audit_number": "050002",
                 "acquirer_reference_number": "74511113156656002500022",
                 "cardholder_account": "461234xxxxxx1234",
@@ -548,10 +542,10 @@ Body
 
     <ResponseField name="txn_data" type="Transaction data Object">
     <Expandable title="properties">
-      <ResponseField name="transaction_id" type="String">
+      <ResponseField name="transaction_id" type="String" required>
         Transaction Identifier
       </ResponseField>
-      <ResponseField name="auth_transactions" type="Auth transaction Object">
+      <ResponseField name="auth_transactions" type="Auth transaction Object" required>
         <Expandable title="properties">
           <ResponseField name="message_type_id" type="String" required>
             Message type identifier
@@ -833,11 +827,8 @@ Body
           </ResponseField>
         </Expandable>
       </ResponseField>
-       <ResponseField name="sale_transactions" type="Sale transsaction Object">
+       <ResponseField name="sale_transactions" type="Sale transaction Object" required>
         <Expandable title="properties">
-        <ResponseField name="acquirer_case_number" type="String" >
-Acquirer Case Number
-</ResponseField>
 <ResponseField name="system_trace_audit_number" type="String" required>
 System Trace Audit Number
 </ResponseField>
@@ -1710,7 +1701,7 @@ Response
 Category for the question. Allowed values - 1 - Question, 2 - Close, 3 - Confirmation
 </ResponseField>
 <ResponseField name="sessionId" type="String" required>
-Unique identifier for this session
+This will be utilized in the subsequent questionnaire process
 </ResponseField>
 <ResponseField name="url" type="String" required>
 URL where the question answer should be submitted
