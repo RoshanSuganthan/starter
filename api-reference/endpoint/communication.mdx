@@ -24,8 +24,9 @@ Authorization - API key
 
 ```bash request
 curl --request POST \
-  --url 'https://{{host}}/udm/v1/card-block' \
+  --url 'https://{{host}}/udm/v1/communication' \
   --header 'Content-Type: application/json' \
+  --header 'x-api-key: ••••••' \
   --data '{
     "recipient_email": "testuser@test.com",
     "subject": "Notification",
@@ -106,7 +107,7 @@ curl --request POST \
 Body
 --- 
 
-<ResponseField name="Communication" type="Communication Object">
+<ResponseField name="communication" type="Communication Object">
   <Expandable title="properties">
     <ResponseField name="recipient_email" type="string" required>
      Recipient mail address
@@ -120,7 +121,7 @@ Body
       Sender name
     </ResponseField>
 
-    <ResponseField name="Files" type="File Object">
+    <ResponseField name="files" type="File Object">
         <Expandable title="properties">
         <ResponseField name="file" type="string" required>
         Base 64 encoded data string
