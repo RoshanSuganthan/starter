@@ -1,9 +1,9 @@
 ---
 title: 'Get Case Status'
-openapi: 'POST /udm/v1/case/{{case_no}}/status'
+openapi: 'GET /udm/v1/case/{{case_no}}/status'
 ---
 
-<Card title="POST /udm/v1/case/{{case_no}}/status" horizontal>
+<Card title="GET /udm/v1/case/{{case_no}}/status" horizontal>
 </Card>
 
 Hosts can use this endpoint to retrieve the current status of the case.
@@ -17,7 +17,7 @@ Authorization - API key
 <RequestExample>
 
 ```bash cURL
-curl --request POST \
+curl --request GET \
   --url 'https://{{host}}/udm/v1/case/{{case_no}}/status' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: ••••••' \
