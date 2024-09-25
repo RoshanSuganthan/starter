@@ -5,7 +5,7 @@
     "dark": "/logo/bg-logo.svg",
     "light": "/logo/bg-logo.svg"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/bs_favicon.svg",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
